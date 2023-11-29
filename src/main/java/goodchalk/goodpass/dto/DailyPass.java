@@ -13,8 +13,8 @@ public class DailyPass {
     private Long dailyPassId;
     private String userName;
     private String contact;
-    private String dailyUserContract;
+    private String dailyUseContract;
     private String privacyContract;
-    private LocalDateTime submitTime;
+    private String submitTime;
     private String userSignature;
 }

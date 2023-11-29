@@ -34,11 +34,14 @@ public class DailyPassGuestController {
     public String save(@PathVariable("climbingGymName") String climbingGymName,
                        @RequestBody DailyPass dailyPass,
                        Model model) {
-        Long climbingGymId = climbingGymService.findBy(climbingGymName);
+        Long climbingGymId = climbingGymService.findIdBy(climbingGymName);
+        System.out.println("climbingGymName = " + climbingGymName);
+        System.out.println("climbingGymId = " + climbingGymId);
+        System.out.println("dailyPass = " + dailyPass);
         dailyPass.setClimbingGymId(climbingGymId);
         dailyPassService.save(dailyPass);
 
         model.addAttribute(climbingGymName);
-        return "redirect:/" + climbingGymName + "/daily/save";
+        return "redirect:/" + climbingGymName + "/daily-pass/save";
     }
 }

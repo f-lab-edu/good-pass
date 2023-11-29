@@ -8,9 +8,6 @@ import java.util.List;
 @Repository
 public interface DailyPassRepository {
     List<DailyPass> findAll(Long climbingGymId);
-    Long findBy(Long dailyPassId);
-    Long findDailyPassIdByContact(String contact);
-    Long findDailyPassIdByUserName(String userName);
-    void delete(Long dailyPassId);
+    DailyPass findBy(Long dailyPassId);
     void save(DailyPass dailyPass);
 }
