@@ -1,13 +1,12 @@
-package goodchalk.goodpass.repository;
+package com.goodchalk.goodpass.repository;
 
-import goodchalk.goodpass.dto.DailyPass;
+import com.goodchalk.goodpass.domain.DailyPass;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Repository
 public class MemoryDailyPassRepository implements DailyPassRepository{

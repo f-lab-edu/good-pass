@@ -1,7 +1,6 @@
-package goodchalk.goodpass.repository;
+package com.goodchalk.goodpass.repository;
 
-import goodchalk.goodpass.dto.ClimbingGym;
-import org.springframework.stereotype.Repository;
+import com.goodchalk.goodpass.domain.ClimbingGym;
 
 public interface ClimbingGymRepository {
     ClimbingGym findBy(Long climbingGymId);

@@ -1,4 +1,4 @@
-package goodchalk.goodpass;
+package com.goodchalk.goodpass;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

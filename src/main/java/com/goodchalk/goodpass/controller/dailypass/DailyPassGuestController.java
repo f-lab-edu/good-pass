@@ -1,15 +1,12 @@
-package goodchalk.goodpass.controller.dailypass;
+package com.goodchalk.goodpass.controller.dailypass;
 
-import goodchalk.goodpass.dto.DailyPass;
-import goodchalk.goodpass.repository.ClimbingGymRepository;
-import goodchalk.goodpass.service.ClimbingGymService;
-import goodchalk.goodpass.service.DailyPassService;
+import com.goodchalk.goodpass.domain.DailyPass;
+import com.goodchalk.goodpass.service.ClimbingGymService;
+import com.goodchalk.goodpass.service.DailyPassService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.PriorityQueue;
 
 @Controller
 @RequestMapping("/{climbingGymName}/daily-pass")

@@ -1,7 +1,7 @@
-package goodchalk.goodpass.controller.dailypass;
+package com.goodchalk.goodpass.controller.dailypass;
 
-import goodchalk.goodpass.dto.DailyPass;
-import goodchalk.goodpass.service.DailyPassService;
+import com.goodchalk.goodpass.domain.DailyPass;
+import com.goodchalk.goodpass.service.DailyPassService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

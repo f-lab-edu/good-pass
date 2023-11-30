@@ -1,6 +1,6 @@
-package goodchalk.goodpass.repository;
+package com.goodchalk.goodpass.repository;
 
-import goodchalk.goodpass.dto.DailyPass;
+import com.goodchalk.goodpass.domain.DailyPass;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

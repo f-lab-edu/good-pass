@@ -1,4 +1,4 @@
-package goodchalk.goodpass.dto;
+package com.goodchalk.goodpass.domain;
 
 import lombok.Data;
 import lombok.Getter;

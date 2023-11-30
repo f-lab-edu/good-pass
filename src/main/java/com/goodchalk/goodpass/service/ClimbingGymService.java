@@ -1,6 +1,6 @@
-package goodchalk.goodpass.service;
+package com.goodchalk.goodpass.service;
 
-import goodchalk.goodpass.repository.ClimbingGymRepository;
+import com.goodchalk.goodpass.repository.ClimbingGymRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

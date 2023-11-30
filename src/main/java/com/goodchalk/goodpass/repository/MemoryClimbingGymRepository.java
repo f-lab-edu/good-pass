@@ -1,6 +1,6 @@
-package goodchalk.goodpass.repository;
+package com.goodchalk.goodpass.repository;
 
-import goodchalk.goodpass.dto.ClimbingGym;
+import com.goodchalk.goodpass.domain.ClimbingGym;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;

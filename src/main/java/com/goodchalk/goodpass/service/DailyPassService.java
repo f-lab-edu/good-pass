@@ -1,14 +1,13 @@
-package goodchalk.goodpass.service;
+package com.goodchalk.goodpass.service;
 
-import goodchalk.goodpass.dto.ClimbingGym;
-import goodchalk.goodpass.dto.DailyPass;
-import goodchalk.goodpass.repository.ClimbingGymRepository;
-import goodchalk.goodpass.repository.DailyPassRepository;
+import com.goodchalk.goodpass.domain.ClimbingGym;
+import com.goodchalk.goodpass.domain.DailyPass;
+import com.goodchalk.goodpass.repository.ClimbingGymRepository;
+import com.goodchalk.goodpass.repository.DailyPassRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 @Component
