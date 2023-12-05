@@ -1,20 +1,24 @@
 package com.goodchalk.goodpass.domain;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Data
+@RequiredArgsConstructor
+@Getter
+@EqualsAndHashCode
 public class ClimbingGym {
-    private Long climbingGymId;
-    private String climbingGymAccount;
-    private String climbingGymName;
-    private String address;
-    private String owner;
-    private String contact;
-    private String email;
-    private LocalDateTime submitTime;
+    private static Long id = 0L;
+
+    private final Long climbingGymId;
+    private final String climbingGymAccount;
+    private final String climbingGymName;
+    private final String address;
+    private final String owner;
+    private final String contact;
+    private final String email;
+
+    public static ClimbingGym create(String climbingGymAccount, String climbingGymName, String address, String owner, String contact, String email) {
+        return new ClimbingGym(id++, climbingGymAccount, climbingGymName, address, owner, contact, email);
+    }
 }

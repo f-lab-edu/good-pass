@@ -1,20 +1,26 @@
 package com.goodchalk.goodpass.domain;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Data
+@RequiredArgsConstructor
+@Getter
+@EqualsAndHashCode
 public class DailyPass {
-    private Long climbingGymId;
-    private Long dailyPassId;
-    private String userName;
-    private String contact;
-    private String dailyUseContract;
-    private String privacyContract;
-    private String submitTime;
-    private String userSignature;
+    private static Long id = 0L;
+
+    private final Long dailyPassId;
+    private final Long climbingGymId;
+    private final String userName;
+    private final String contact;
+    private final String dailyUseContract;
+    private final String privacyContract;
+    private final String submitTime;
+
+    public static DailyPass create(Long climbingGymId, String userName, String contact, String dailyUseContract, String privacyContract, String submitTime) {
+        return new DailyPass(id++, climbingGymId, userName, contact, dailyUseContract, privacyContract, submitTime);
+    }
+
+
 }

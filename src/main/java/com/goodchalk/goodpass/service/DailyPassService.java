@@ -18,21 +18,23 @@ public class DailyPassService {
     private final DailyPassRepository dailyPassRepository;
     private final ClimbingGymRepository climbingGymRepository;
 
-    public List<DailyPass> findAllBy(String climbingGymName) {
-        Long climbingGymId = climbingGymRepository.findIdBy(climbingGymName);
-        if (climbingGymId == null) {
-            return EMPTY_LIST_DAIL_PASS;
+    public List<DailyPass> findAll(Long climbingGymId) {
+        if (!climbingGymRepository.contain(climbingGymId)) {
+            throw new RuntimeException("해당 클라이밍장은 등록되어 있지 않습니다.");
         }
+
         return dailyPassRepository.findAll(climbingGymId);
     }
 
+    public DailyPass findBy(Long dailyPassId) {
+        return dailyPassRepository.findBy(dailyPassId);
+    }
+
     public void save(DailyPass dailyPass) {
-        Long targetClimbingGymId = dailyPass.getClimbingGymId();
-        ClimbingGym climbingGym = climbingGymRepository.findBy(targetClimbingGymId);
-        if (climbingGym == null) {
-            throw new RuntimeException("존재하지 않는 id값 입니다. climbingGymName = " + targetClimbingGymId);
+        if (!climbingGymRepository.contain(dailyPass.getClimbingGymId())) {
+            throw new RuntimeException("dailyPass를 저장할 climbingGym이 존재하지 않습니다.");
         }
-        dailyPassRepository.save(dailyPass);
+        dailyPassRepository.add(dailyPass);
     }
 }
 

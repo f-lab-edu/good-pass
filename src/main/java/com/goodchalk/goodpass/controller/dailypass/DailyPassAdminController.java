@@ -21,7 +21,8 @@ public class DailyPassAdminController {
     @GetMapping
     public String listUpDailyPass(@PathVariable("climbingGymName") String climbingGymName, Model model) {
         log.info("climbingGymName = " + climbingGymName);
-        List<DailyPass> dailyPasses = dailyPassService.findAllBy(climbingGymName);
+        //List<DailyPass> dailyPasses = dailyPassService.findAllBy(climbingGymName);
+        List<DailyPass> dailyPasses = null;
         model.addAttribute("dailyPasses", dailyPasses);
         return "admin/daily-pass";
     }

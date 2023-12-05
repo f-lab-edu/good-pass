@@ -8,27 +8,30 @@ import java.util.Map;
 
 @Repository
 public class MemoryClimbingGymRepository implements ClimbingGymRepository{
-    private static final Map<Long, ClimbingGym> climbingGymMapper = new HashMap<>();
-
-    {
-        ClimbingGym climbingGym = new ClimbingGym();
-        climbingGym.setClimbingGymId(1L);
-        climbingGym.setClimbingGymName("picclimbing");
-        climbingGymMapper.put(1L, climbingGym);
+    private final static Map<Long, ClimbingGym> climbingGymMapper = new HashMap<>();
+    @Override
+    public void add(ClimbingGym climbingGym) {
+        Long climbingGymId = climbingGym.getClimbingGymId();
+        if (climbingGymMapper.containsKey(climbingGymId)) {
+            throw new RuntimeException("climbingGymId = " + climbingGymId + " 가 이미 repository에 존재합니다.");
+        }
+        climbingGymMapper.put(climbingGymId, climbingGym);
     }
-
     @Override
     public ClimbingGym findBy(Long climbingGymId) {
+        if (!climbingGymMapper.containsKey(climbingGymId)) {
+            throw new RuntimeException("climbingGymId = " + climbingGymId + " 에 해당하는 climbingGym 객체를 찾을 수 없습니다.");
+        }
         return climbingGymMapper.get(climbingGymId);
     }
 
     @Override
-    public Long findIdBy(String climbingGymName) {
-        return climbingGymMapper.entrySet().stream()
-                .filter((entry) -> entry.getValue().getClimbingGymName().equals(climbingGymName))
-                .findFirst()
-                .orElseThrow(() -> new RuntimeException("잘못된 climbingGymName입니다."))
-                .getValue()
-                .getClimbingGymId();
+    public boolean contain(Long climbingGymId) {
+        return climbingGymMapper.containsKey(climbingGymId);
+    }
+
+    @Override
+    public void clear() {
+        climbingGymMapper.clear();
     }
 }

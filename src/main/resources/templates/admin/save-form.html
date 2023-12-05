@@ -5,7 +5,7 @@
     <title>daily-pass</title>
 </head>
 <body>
-<form th:action="@{'/' + ${climbingGymName} + '/daily-pass/save'}" id="submitForm"  method="post">
+<form th:action="@{'/' + ${climbingGymId} + '/daily-pass/save'}" id="submitForm"  method="post">
     <label for="userName">이름:</label>
     <input type="text" id="userName" th:text="${userName}" readonly>
     <br>
