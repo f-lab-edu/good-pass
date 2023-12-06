@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>daily-pass</title>
+</head>
+<body>
+<form th:action="@{'/' + ${climbingGymId} + '/daily-pass/save-signature'}" id="submitForm"  method="post">
+  <h2>서명란</h2>
+  <canvas id="signatureCanvas" width="200" height="100" name="signature"></canvas>
+  <input type="hidden" id="userSignature" name="userSignature" />
+  <br>
+  <button onclick="saveSignature()">제출</button>
+</form>
+<button onclick="clearCanvas()">서명 지우기</button>
+</body>
+</html>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var canvas = document.getElementById("signatureCanvas");
+  var context = canvas.getContext("2d");
+  var isDrawing = false;
+
+  canvas.addEventListener("mousedown", function (e) {
+    isDrawing = true;
+    context.beginPath();
+    context.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+  });
+
+  canvas.addEventListener("mousemove", function (e) {
+    if (isDrawing) {
+      context.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+      context.stroke();
+    }
+  });
+
+  canvas.addEventListener("mouseup", function () {
+    isDrawing = false;
+  });
+
+  canvas.addEventListener("mouseout", function () {
+    isDrawing = false;
+  });
+});
+
+function clearCanvas() {
+  var canvas = document.getElementById("signatureCanvas");
+  var context = canvas.getContext("2d");
+  context.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function saveSignature() {
+  var canvas = document.getElementById("signatureCanvas");
+  document.getElementById("userSignature").value = canvas.toDataURL("image/png");
+}
+
+// function submitForm() {
+//   const formData = new FormData(document.getElementById("submitForm"));
+//
+//   var json = {};
+//   formData.forEach(function (value, key){
+//     json[key] = value;
+//   })
+//
+//   var jsonBody = JSON.stringify(json);
+// }
+</script>

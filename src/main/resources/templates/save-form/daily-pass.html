@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>daily-pass</title>
+</head>
+<body>
+<form th:action="@{'/' + ${climbingGymId} + '/daily-pass/save'}" id="submitForm"  method="post">
+  <label for="userName">이름:</label>
+  <input type="text" id="userName" name="userName">
+  <br>
+  <label for="contact">연락처:</label>
+  <input type="text" id="contact" name="contact">
+  <br>
+  <div>
+    <h1>
+      암장 이용 약관
+    </h1>
+  </div>
+  <label for="climbingGymContract">위 내용을 읽고 동의합니다. (필수) </label>
+  <input type="checkbox" id="climbingGymContract" name="dailyUseContract">
+  <br>
+  <div>
+    <h1>
+      ㅇㅅㅇ
+    </h1>
+  </div>
+  <label for="privacyContract">위 내용을 읽고 동의합니다. (선택) </label>
+  <input type="checkbox" id="privacyContract" name="privacyContract">
+  <br>
+  <button>다음</button>
+</form>
+</body>
+</html>
