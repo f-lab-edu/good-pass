@@ -1,12 +1,16 @@
 package com.goodchalk.goodpass.dto.request;
 
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-@Data
+@RequiredArgsConstructor
+@Getter
+@Builder
 public class DailyPassSaveDto {
-    private String userName;
-    private String contact;
-    private String dailyUseGymContract;
-    private String privacyContract;
-    private String submitTime;
+    private final String userName;
+    private final String contact;
+    private final String dailyUseGymContract;
+    private final String privacyContract;
+    private final String submitTime;
 }

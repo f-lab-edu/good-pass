@@ -3,7 +3,7 @@ package com.goodchalk.goodpass.repository;
 import com.goodchalk.goodpass.domain.ClimbingGym;
 
 public interface ClimbingGymRepository {
-    void add(ClimbingGym climbingGym);
+    ClimbingGym save(ClimbingGym climbingGym);
 
     ClimbingGym findBy(Long climbingGymId);
 

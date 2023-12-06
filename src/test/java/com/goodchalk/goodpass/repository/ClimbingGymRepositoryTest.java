@@ -12,16 +12,15 @@ class ClimbingGymRepositoryTest {
     private final static ClimbingGymRepository climbingGymRepository = new MemoryClimbingGymRepository();
     @Test
     public void findByTest() {
-        ClimbingGym climbingGym = new ClimbingGym(3L,
-                "test",
-                "테스트클라이밍",
-                "테스트",
-                "센터장",
-                "000-0000-0002",
-                "test.climb@gmail.com");
-        climbingGymRepository.add(climbingGym);
-        ClimbingGym climbingGymFromRepository = climbingGymRepository.findBy(climbingGym.getClimbingGymId());
+        ClimbingGym climbingGym = ClimbingGym.builder()
+                .climbingGymName("testclimbinggym")
+                .build();
 
-        assertThat(climbingGymFromRepository).isEqualTo(climbingGym);
+        ClimbingGym savedClimbingGym = climbingGymRepository.save(climbingGym);
+        Long climbingGymId = savedClimbingGym.getClimbingGymId();
+
+        ClimbingGym climbingGymFromRepository = climbingGymRepository.findBy(climbingGymId);
+
+        assertThat(climbingGymFromRepository.getClimbingGymName()).isEqualTo("testclimbinggym");
     }
 }

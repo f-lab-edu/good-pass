@@ -2,59 +2,65 @@ package com.goodchalk.goodpass.controller.dailypass;
 
 import com.goodchalk.goodpass.domain.DailyPass;
 import com.goodchalk.goodpass.dto.request.DailyPassSaveDto;
-import com.goodchalk.goodpass.service.ClimbingGymService;
-import com.goodchalk.goodpass.service.DailyPassService;
+import com.goodchalk.goodpass.dto.response.DailyPassFail;
+import com.goodchalk.goodpass.dto.response.DailyPassSaveFinish;
+import com.goodchalk.goodpass.dto.response.DailyPassSaveForm;
+import com.goodchalk.goodpass.dto.response.DailyPassSignature;
+import com.goodchalk.goodpass.service.ClimbingGymSearchService;
+import com.goodchalk.goodpass.service.DailyPassSaveService;
+import com.goodchalk.goodpass.service.DailyPassSearchService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping("/{climbingGymId}/daily-pass")
 @RequiredArgsConstructor
 public class DailyPassGuestController {
-    private final DailyPassService dailyPassService;
-    private final ClimbingGymService climbingGymService;
+    private final DailyPassSearchService dailyPassSearchService;
+    private final DailyPassSaveService dailyPassSaveService;
+    private final ClimbingGymSearchService climbingGymSearchService;
 
     @GetMapping("/save-form")
-    public String showSaveForm(@PathVariable("climbingGymId") Long climbingGymId, Model model) {
-        //String climbingGymName = climbingGymService.findNameBy(climbingGymId);
-        model.addAttribute("climbingGymId", climbingGymId);
-        return "save-form/daily-pass";
+    public DailyPassSaveForm showSaveForm(@PathVariable("climbingGymId") Long climbingGymId) {
+        return DailyPassSaveForm.builder()
+                .climbingGymId(climbingGymId)
+                .build();
     }
 
     @GetMapping("/save")
-    public String showSaveCompete(@PathVariable("climbingGymId") Long climbingGymId, Model model) {
-        model.addAttribute("climbingGymId", climbingGymId);
-        return "save-form/complete";
+    public DailyPassSaveFinish showSaveCompete(@PathVariable("climbingGymId") Long climbingGymId) {
+        String climbingGymName = climbingGymSearchService.findClimbingGymName(climbingGymId);
+        return DailyPassSaveFinish.builder()
+                .climbingGymId(climbingGymId)
+                .message(climbingGymName)
+                .build();
     }
 
-    @GetMapping("/signature-form")
-    public String showSignatureForm(@PathVariable("climbingGymId") Long climbingGymId, Model model) {
-        model.addAttribute("climbingGymId", climbingGymId);
-        return "save-form/signature-form";
+    @GetMapping("/{dailyPassId}/signature-form")
+    public DailyPassSignature showSignatureForm(@PathVariable("climbingGymId") Long climbingGymId,
+                                    @PathVariable("dailyPassId") Long dailyPassId) {
+        return DailyPassSignature.builder()
+                .climbingGymId(climbingGymId)
+                .dailyPassId(dailyPassId)
+                .build();
     }
 
     @PostMapping("/save")
-    public String save(@PathVariable("climbingGymId") Long climbingGymId, @RequestBody DailyPassSaveDto dailyPassSaveDto, Model model) {
-        DailyPass dailyPass = DailyPass.create(climbingGymId,
-                dailyPassSaveDto.getUserName(),
-                dailyPassSaveDto.getContact(),
-                dailyPassSaveDto.getDailyUseGymContract(),
-                dailyPassSaveDto.getPrivacyContract(),
-                dailyPassSaveDto.getSubmitTime());
-        dailyPassService.save(dailyPass);
+    public DailyPassSignature save(@PathVariable("climbingGymId") Long climbingGymId, @RequestBody DailyPassSaveDto dailyPassSaveDto) {
+        DailyPass dailyPass = dailyPassSaveService.save(climbingGymId, dailyPassSaveDto);
+        Long dailyPassId = dailyPass.getDailyPassId();
+        if (dailyPassSaveService.isNotRegistered(dailyPassId)) {
+            return DailyPassSignature.createSuccess();
+        }
 
-        model.addAttribute(climbingGymId);
-        return "redirect:/" + climbingGymId + "/daily-pass/signature-form";
+        return DailyPassSignature.createFail();
     }
 
     @PostMapping("/save-signature")
-    public String saveSignature(@PathVariable("climbingGymId") Long climbingGymId, Model model) {
-        DailyPass dailyPass = null;
-        //dailyPassService.save(dailyPass);
-
-        model.addAttribute(climbingGymId);
-        return "redirect:/" + climbingGymId + "/daily-pass/save";
+    public DailyPassSaveFinish saveSignature(@PathVariable("climbingGymId") Long climbingGymId) {
+        return DailyPassSaveFinish.builder()
+                .climbingGymId(climbingGymId)
+                .build();
     }
 }

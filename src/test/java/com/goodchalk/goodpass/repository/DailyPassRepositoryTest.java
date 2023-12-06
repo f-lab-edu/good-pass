@@ -20,32 +20,36 @@ class DailyPassRepositoryTest {
 
     @Test
     public void findByTest() {
-        DailyPass dailyPass = new DailyPass(1L,1L,
-                "임동규", "01087060902", "Agree", "Agree", "???");
+        DailyPass dailyPass = DailyPass.builder()
+                .climbingGymId(0L)
+                .userName("임동규")
+                .build();
 
-        dailyPassRepository.add(dailyPass);
-        DailyPass dailyPassFromRepository = dailyPassRepository.findBy(dailyPass.getDailyPassId());
+        DailyPass savedDailyPass = dailyPassRepository.save(dailyPass);
 
-        assertThat(dailyPass).isEqualTo(dailyPassFromRepository);
+        Long dailyPassId = savedDailyPass.getDailyPassId();
+
+        DailyPass dailyPassFromRepository = dailyPassRepository.findBy(dailyPassId);
+
+        assertThat(dailyPassFromRepository.getUserName()).isEqualTo("임동규");
+        assertThat(dailyPassFromRepository.getClimbingGymId()).isEqualTo(0L);
     }
 
     @Test
     public void findAllTest() {
-        DailyPass dailyPass1 = new DailyPass(1L, 1L,
-                "임동규", "01087060902", "Agree", "Agree", "???");
-        DailyPass dailyPass2 = new DailyPass(2L, 1L,
-                "임동규", "01087060902", "Agree", "Agree", "???");
-        DailyPass dailyPass3 = new DailyPass(3L, 2L,
-                "임동규", "01087060902", "Agree", "Agree", "???");
+        DailyPass dailyPassInClimbingGym0 = DailyPass.builder()
+                .climbingGymId(0L)
+                .build();
+        DailyPass dailyPassInClimbingGym1 = DailyPass.builder()
+                .climbingGymId(1L)
+                .build();
 
-        dailyPassRepository.add(dailyPass1);
-        dailyPassRepository.add(dailyPass2);
-        dailyPassRepository.add(dailyPass3);
+        dailyPassRepository.save(dailyPassInClimbingGym0);
+        dailyPassRepository.save(dailyPassInClimbingGym0);
+        dailyPassRepository.save(dailyPassInClimbingGym1);
 
-        List<DailyPass> dailyPasses = dailyPassRepository.findAll(1L);
+        List<DailyPass> dailyPasses = dailyPassRepository.findAll(0L);
 
-        assertThat(dailyPasses).contains(dailyPass1);
-        assertThat(dailyPasses).contains(dailyPass2);
-        assertThat(dailyPasses).doesNotContain(dailyPass3);
+        Assertions.assertThat(dailyPasses.size()).isEqualTo(2);
     }
 }

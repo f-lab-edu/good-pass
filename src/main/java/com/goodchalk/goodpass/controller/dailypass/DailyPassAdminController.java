@@ -1,7 +1,8 @@
 package com.goodchalk.goodpass.controller.dailypass;
 
 import com.goodchalk.goodpass.domain.DailyPass;
-import com.goodchalk.goodpass.service.DailyPassService;
+import com.goodchalk.goodpass.dto.response.DailyPassListInClimbingGym;
+import com.goodchalk.goodpass.service.DailyPassSearchService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -15,15 +16,14 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping("/{climbingGymName}/admin/daily-pass")
+@RequestMapping("/{climbingGymId}/admin/daily-pass")
 public class DailyPassAdminController {
-    private final DailyPassService dailyPassService;
+    private final DailyPassSearchService dailyPassSearchService;
     @GetMapping
-    public String listUpDailyPass(@PathVariable("climbingGymName") String climbingGymName, Model model) {
-        log.info("climbingGymName = " + climbingGymName);
-        //List<DailyPass> dailyPasses = dailyPassService.findAllBy(climbingGymName);
-        List<DailyPass> dailyPasses = null;
-        model.addAttribute("dailyPasses", dailyPasses);
-        return "admin/daily-pass";
+    public DailyPassListInClimbingGym listUpDailyPass(@PathVariable("climbingGymId") Long climbingGymId) {
+        List<DailyPass> dailyPasses = dailyPassSearchService.findAll(climbingGymId);
+        return DailyPassListInClimbingGym.builder()
+                .dailyPasses(dailyPasses)
+                .build();
     }
 }

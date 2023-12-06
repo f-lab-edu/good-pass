@@ -7,7 +7,6 @@ import java.util.List;
 public interface DailyPassRepository {
     List<DailyPass> findAll(Long climbingGymId);
     DailyPass findBy(Long dailyPassId);
-    void add(DailyPass dailyPass);
-
+    DailyPass save(DailyPass dailyPass);
     void clear();
 }
