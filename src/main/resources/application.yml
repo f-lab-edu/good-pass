@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    active: local
+  datasource:
+    url: jdbc:mysql://localhost:6021/good_pass?useSSL=false
+    username: root
+    password: root
+    driver-class-name: org.mariadb.jdbc.Driver
