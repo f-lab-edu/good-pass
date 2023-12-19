@@ -60,15 +60,15 @@ public class SpringBasicJdbcTest {
 
     @Test
     public void testEnumType1() {
-        DailyPass dailyPass = DailyPass.builder().userName("enumTest").privacyContract(Contract.Agree).build();
+        DailyPass dailyPass = DailyPass.builder().userName("enumTest").privacyContract(Contract.AGREE).build();
         dailyPassRepository.save(dailyPass);
     }
 
     @Test
     public void testEnumType2() {
         DailyPass dailyPass = DailyPass.builder().userName("enumTest2")
-                .privacyContract(Contract.Agree)
-                .dailyUseContract(Contract.Disagree).build();
+                .privacyContract(Contract.AGREE)
+                .dailyUseContract(Contract.DISAGREE).build();
         dailyPassRepository.save(dailyPass);
     }
 }

@@ -14,7 +14,7 @@ public class DailyPassSaveService {
     private final ClimbingGymValidateService climbingGymValidateService;
 
     public DailyPass save(Long climbingGymId, DailyPassSaveDto dailyPassSaveDto) {
-        climbingGymValidateService.exist(climbingGymId);
+        climbingGymValidateService.validExist(climbingGymId);
 
         DailyPass dailyPass = dailyPassSaveDto.createDailyPass(climbingGymId);
 

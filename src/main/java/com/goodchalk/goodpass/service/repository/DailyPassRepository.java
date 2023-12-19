@@ -1,6 +1,5 @@
 package com.goodchalk.goodpass.service.repository;
 
-import com.goodchalk.goodpass.service.domain.ClimbingGym;
 import com.goodchalk.goodpass.service.domain.DailyPass;
 import org.springframework.data.repository.CrudRepository;
 

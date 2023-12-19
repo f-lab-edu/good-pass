@@ -10,13 +10,12 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ClimbingGymValidateService {
+public class ClimbingGymSearchService {
     private final ClimbingGymRepository climbingGymRepository;
 
-    public void validExist(Long climbingGymId) {
+    public String findClimbingGymName(Long climbingGymId) {
         Optional<ClimbingGym> climbingGymOptional = climbingGymRepository.findById(climbingGymId);
-        if (climbingGymOptional.isEmpty()) {
-            throw new NoSuchClimbingGymException();
-        }
+        ClimbingGym climbingGym = climbingGymOptional.orElseThrow(NoSuchClimbingGymException::new);
+        return climbingGym.getClimbingGymName();
     }
 }

@@ -15,7 +15,7 @@ public class DailyPassSearchService {
     private final ClimbingGymValidateService climbingGymValidateService;
 
     public List<DailyPass> searchByClimbingGymId(Long climbingGymId) {
-        climbingGymValidateService.exist(climbingGymId);
+        climbingGymValidateService.validExist(climbingGymId);
 
         return dailyPassRepository.findByClimbingGymId(climbingGymId);
     }

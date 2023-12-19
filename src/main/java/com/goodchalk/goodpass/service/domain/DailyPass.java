@@ -1,5 +1,6 @@
 package com.goodchalk.goodpass.service.domain;
 
+import com.goodchalk.goodpass.service.domain.Contract;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;

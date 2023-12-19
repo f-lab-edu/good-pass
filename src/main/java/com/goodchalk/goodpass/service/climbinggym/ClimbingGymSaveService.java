@@ -1,6 +1,6 @@
 package com.goodchalk.goodpass.service.climbinggym;
 
-import com.goodchalk.goodpass.exception.AlreadyRegisteredClimbingGymException;
+import com.goodchalk.goodpass.exception.domain.AlreadyRegisteredClimbingGymException;
 import com.goodchalk.goodpass.service.climbinggym.dto.ClimbingGymSaveDto;
 import com.goodchalk.goodpass.service.domain.ClimbingGym;
 import com.goodchalk.goodpass.service.repository.ClimbingGymRepository;

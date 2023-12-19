@@ -3,7 +3,6 @@ package com.goodchalk.goodpass.service.climbinggym.dto;
 import com.goodchalk.goodpass.service.domain.ClimbingGym;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Getter

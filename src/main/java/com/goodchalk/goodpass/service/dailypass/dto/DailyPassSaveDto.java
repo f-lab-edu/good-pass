@@ -1,6 +1,5 @@
 package com.goodchalk.goodpass.service.dailypass.dto;
 
-import com.goodchalk.goodpass.service.domain.ClimbingGym;
 import com.goodchalk.goodpass.service.domain.Contract;
 import com.goodchalk.goodpass.service.domain.DailyPass;
 import lombok.Builder;

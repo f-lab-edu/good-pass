@@ -1,7 +1,7 @@
 package com.goodchalk.goodpass.service.dailypass;
 
 import com.goodchalk.goodpass.GoodpassApplication;
-import com.goodchalk.goodpass.exception.NoSuchClimbingGymException;
+import com.goodchalk.goodpass.exception.domain.NoSuchClimbingGymException;
 import com.goodchalk.goodpass.service.domain.ClimbingGym;
 import com.goodchalk.goodpass.service.domain.Contract;
 import com.goodchalk.goodpass.service.domain.DailyPass;
@@ -39,7 +39,7 @@ class DailyPassSaveServiceTest {
     void save() {
         DailyPassSaveDto dailyPassSaveDto = DailyPassSaveDto.builder()
                 .userName("임동규")
-                .dailyUseGymContract(Contract.Agree)
+                .dailyUseGymContract(Contract.AGREE)
                 .submitTime(LocalDateTime.now())
                 .build();
 
@@ -58,7 +58,7 @@ class DailyPassSaveServiceTest {
 
         DailyPassSaveDto dailyPassSaveDto = DailyPassSaveDto.builder()
                 .userName("임동규")
-                .dailyUseGymContract(Contract.Agree)
+                .dailyUseGymContract(Contract.AGREE)
                 .submitTime(LocalDateTime.now())
                 .build();
 
