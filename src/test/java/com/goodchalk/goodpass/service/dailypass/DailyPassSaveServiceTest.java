@@ -1,13 +1,14 @@
 package com.goodchalk.goodpass.service.dailypass;
 
 import com.goodchalk.goodpass.GoodpassApplication;
-import com.goodchalk.goodpass.exception.domain.NoSuchClimbingGymException;
-import com.goodchalk.goodpass.service.domain.ClimbingGym;
-import com.goodchalk.goodpass.service.domain.Contract;
-import com.goodchalk.goodpass.service.domain.DailyPass;
-import com.goodchalk.goodpass.service.dailypass.dto.DailyPassSaveDto;
-import com.goodchalk.goodpass.service.repository.ClimbingGymRepository;
-import com.goodchalk.goodpass.service.repository.DailyPassRepository;
+import com.goodchalk.goodpass.dailypass.service.DailyPassSaveService;
+import com.goodchalk.goodpass.dailypass.service.dto.DailyPassSaveDto;
+import com.goodchalk.goodpass.domain.model.ClimbingGym;
+import com.goodchalk.goodpass.domain.model.Contract;
+import com.goodchalk.goodpass.domain.model.DailyPass;
+import com.goodchalk.goodpass.domain.repository.ClimbingGymRepository;
+import com.goodchalk.goodpass.domain.repository.DailyPassRepository;
+import com.goodchalk.goodpass.exception.GoodPassBusinessException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,8 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(classes = GoodpassApplication.class)
 class DailyPassSaveServiceTest {
@@ -43,7 +45,7 @@ class DailyPassSaveServiceTest {
                 .submitTime(LocalDateTime.now())
                 .build();
 
-        Assertions.assertThrows(NoSuchClimbingGymException.class, () -> {
+        Assertions.assertThrows(GoodPassBusinessException.class, () -> {
             dailyPassSaveService.save(0L, dailyPassSaveDto);
         });
     }
@@ -64,7 +66,8 @@ class DailyPassSaveServiceTest {
 
         dailyPassSaveService.save(climbingGymId, dailyPassSaveDto);
 
-        DailyPass dailyPass = dailyPassRepository.findByUserName("임동규");
+        Optional<DailyPass> dailyPassOptional = dailyPassRepository.findByUserName("임동규");
+        DailyPass dailyPass = dailyPassOptional.orElseThrow();
 
         assertThat(dailyPass.getUserName()).isEqualTo("임동규");
     }

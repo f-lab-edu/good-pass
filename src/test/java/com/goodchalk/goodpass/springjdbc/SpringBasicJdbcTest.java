@@ -1,11 +1,11 @@
 package com.goodchalk.goodpass.springjdbc;
 
 import com.goodchalk.goodpass.GoodpassApplication;
-import com.goodchalk.goodpass.service.domain.ClimbingGym;
-import com.goodchalk.goodpass.service.domain.Contract;
-import com.goodchalk.goodpass.service.domain.DailyPass;
-import com.goodchalk.goodpass.service.repository.ClimbingGymRepository;
-import com.goodchalk.goodpass.service.repository.DailyPassRepository;
+import com.goodchalk.goodpass.domain.model.ClimbingGym;
+import com.goodchalk.goodpass.domain.model.Contract;
+import com.goodchalk.goodpass.domain.model.DailyPass;
+import com.goodchalk.goodpass.domain.repository.ClimbingGymRepository;
+import com.goodchalk.goodpass.domain.repository.DailyPassRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
