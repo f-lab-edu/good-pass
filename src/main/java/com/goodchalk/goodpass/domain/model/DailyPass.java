@@ -20,7 +20,8 @@ public class DailyPass {
     private LocalDateTime submitTime;
 
     @Builder
-    public DailyPass(Long climbingGymId, String userName, String contact, Contract dailyUseContract, Contract privacyContract, LocalDateTime submitTime) {
+    public DailyPass(Long id, Long climbingGymId, String userName, String contact, Contract dailyUseContract, Contract privacyContract, LocalDateTime submitTime) {
+        this.id = id;
         this.climbingGymId = climbingGymId;
         this.userName = userName;
         this.contact = contact;

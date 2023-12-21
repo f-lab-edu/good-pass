@@ -19,7 +19,8 @@ public class ClimbingGym {
     private String email;
 
     @Builder
-    public ClimbingGym(String climbingGymName, String address, String owner, String contact, String email) {
+    public ClimbingGym(Long id, String climbingGymName, String address, String owner, String contact, String email) {
+        this.id = id;
         this.climbingGymName = climbingGymName;
         this.address = address;
         this.owner = owner;

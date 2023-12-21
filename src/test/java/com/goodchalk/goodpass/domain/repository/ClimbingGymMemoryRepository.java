@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 public class ClimbingGymMemoryRepository implements ClimbingGymRepository {
-    private final static int AUTO_INCREMENT = 0;
+    private Long autoIncrement = 0L;
     private final Map<Long, ClimbingGym> climbingGymHashMap = new HashMap<>();
 
     @Override
@@ -21,13 +21,22 @@ public class ClimbingGymMemoryRepository implements ClimbingGymRepository {
 
     @Override
     public ClimbingGym save(ClimbingGym climbingGym) {
-        return ClimbingGym.builder()
+        Long climbingGymId = ++autoIncrement;
+        ClimbingGym targetClimbingGym = ClimbingGym.builder()
+                .id(climbingGymId)
                 .climbingGymName(climbingGym.getClimbingGymName())
                 .address(climbingGym.getAddress())
                 .owner(climbingGym.getOwner())
                 .email(climbingGym.getEmail())
                 .contact(climbingGym.getContact())
                 .build();
+
+        if (climbingGymHashMap.containsKey(climbingGymId)) {
+            throw new RuntimeException("이미 존재하는 ID 값 입니다.");
+        }
+        climbingGymHashMap.put(climbingGymId, targetClimbingGym);
+
+        return targetClimbingGym;
     }
 
     @Override
