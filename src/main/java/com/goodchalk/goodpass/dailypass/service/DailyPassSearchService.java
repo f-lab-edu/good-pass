@@ -1,9 +1,9 @@
 package com.goodchalk.goodpass.dailypass.service;
 
-import com.goodchalk.goodpass.domain.model.ClimbingGym;
-import com.goodchalk.goodpass.domain.model.DailyPass;
-import com.goodchalk.goodpass.domain.repository.ClimbingGymRepository;
-import com.goodchalk.goodpass.domain.repository.DailyPassRepository;
+import com.goodchalk.goodpass.climbinggym.domain.ClimbingGym;
+import com.goodchalk.goodpass.dailypass.domain.DailyPass;
+import com.goodchalk.goodpass.climbinggym.domain.ClimbingGymRepository;
+import com.goodchalk.goodpass.dailypass.domain.DailyPassRepository;
 import com.goodchalk.goodpass.exception.GoodPassBusinessException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ public class DailyPassSearchService {
 
     public List<DailyPass> searchByClimbingGymId(Long climbingGymId) {
         Optional<ClimbingGym> climbingGymOptional = climbingGymRepository.findById(climbingGymId);
-        climbingGymOptional.orElseThrow(GoodPassBusinessException::new);
+        climbingGymOptional.orElseThrow(() -> new RuntimeException("등록되지 않은 클라이밍장입니다. climbingGymId=" + climbingGymId));
 
         return dailyPassRepository.findByClimbingGymId(climbingGymId);
     }

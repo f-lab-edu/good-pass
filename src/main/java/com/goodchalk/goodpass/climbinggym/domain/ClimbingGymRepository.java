@@ -1,9 +1,7 @@
-package com.goodchalk.goodpass.domain.repository;
+package com.goodchalk.goodpass.climbinggym.domain;
 
-import com.goodchalk.goodpass.domain.model.ClimbingGym;
-import org.springframework.data.repository.CrudRepository;
+import com.goodchalk.goodpass.climbinggym.domain.ClimbingGym;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface ClimbingGymRepository {

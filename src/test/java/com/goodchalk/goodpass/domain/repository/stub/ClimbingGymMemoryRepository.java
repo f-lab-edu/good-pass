@@ -1,7 +1,7 @@
 package com.goodchalk.goodpass.domain.repository.stub;
 
-import com.goodchalk.goodpass.domain.model.ClimbingGym;
-import com.goodchalk.goodpass.domain.repository.ClimbingGymRepository;
+import com.goodchalk.goodpass.climbinggym.domain.ClimbingGym;
+import com.goodchalk.goodpass.climbinggym.domain.ClimbingGymRepository;
 import lombok.RequiredArgsConstructor;
 
 import java.util.HashMap;

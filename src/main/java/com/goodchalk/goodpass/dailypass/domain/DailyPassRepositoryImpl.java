@@ -1,6 +1,5 @@
-package com.goodchalk.goodpass.domain.repository;
+package com.goodchalk.goodpass.dailypass.domain;
 
-import com.goodchalk.goodpass.domain.model.DailyPass;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

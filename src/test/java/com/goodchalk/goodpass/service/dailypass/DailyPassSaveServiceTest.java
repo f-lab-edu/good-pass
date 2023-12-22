@@ -1,14 +1,13 @@
 package com.goodchalk.goodpass.service.dailypass;
 
-import com.goodchalk.goodpass.GoodpassApplication;
 import com.goodchalk.goodpass.TestConfig;
 import com.goodchalk.goodpass.dailypass.service.DailyPassSaveService;
 import com.goodchalk.goodpass.dailypass.service.dto.DailyPassSaveDto;
-import com.goodchalk.goodpass.domain.model.ClimbingGym;
-import com.goodchalk.goodpass.domain.model.Contract;
-import com.goodchalk.goodpass.domain.model.DailyPass;
-import com.goodchalk.goodpass.domain.repository.ClimbingGymRepository;
-import com.goodchalk.goodpass.domain.repository.DailyPassRepository;
+import com.goodchalk.goodpass.climbinggym.domain.ClimbingGym;
+import com.goodchalk.goodpass.dailypass.domain.Contract;
+import com.goodchalk.goodpass.dailypass.domain.DailyPass;
+import com.goodchalk.goodpass.climbinggym.domain.ClimbingGymRepository;
+import com.goodchalk.goodpass.dailypass.domain.DailyPassRepository;
 import com.goodchalk.goodpass.exception.GoodPassBusinessException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

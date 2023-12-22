@@ -1,6 +1,6 @@
 package com.goodchalk.goodpass.dailypass.controller.dto.response;
 
-import com.goodchalk.goodpass.domain.model.DailyPass;
+import com.goodchalk.goodpass.dailypass.domain.DailyPass;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

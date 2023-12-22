@@ -1,7 +1,7 @@
 package com.goodchalk.goodpass.domain.repository.stub;
 
-import com.goodchalk.goodpass.domain.model.DailyPass;
-import com.goodchalk.goodpass.domain.repository.DailyPassRepository;
+import com.goodchalk.goodpass.dailypass.domain.DailyPass;
+import com.goodchalk.goodpass.dailypass.domain.DailyPassRepository;
 
 import java.util.HashMap;
 import java.util.List;

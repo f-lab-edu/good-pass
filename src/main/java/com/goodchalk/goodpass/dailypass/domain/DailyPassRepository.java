@@ -1,7 +1,6 @@
-package com.goodchalk.goodpass.domain.repository;
+package com.goodchalk.goodpass.dailypass.domain;
 
-import com.goodchalk.goodpass.domain.model.DailyPass;
-import org.springframework.data.repository.CrudRepository;
+import com.goodchalk.goodpass.dailypass.domain.DailyPass;
 
 import java.util.List;
 import java.util.Optional;

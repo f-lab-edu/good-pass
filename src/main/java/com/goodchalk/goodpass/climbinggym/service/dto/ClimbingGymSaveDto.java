@@ -1,6 +1,6 @@
 package com.goodchalk.goodpass.climbinggym.service.dto;
 
-import com.goodchalk.goodpass.domain.model.ClimbingGym;
+import com.goodchalk.goodpass.climbinggym.domain.ClimbingGym;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

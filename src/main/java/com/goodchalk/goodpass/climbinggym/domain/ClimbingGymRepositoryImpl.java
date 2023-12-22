@@ -1,11 +1,8 @@
-package com.goodchalk.goodpass.domain.repository;
+package com.goodchalk.goodpass.climbinggym.domain;
 
-import com.goodchalk.goodpass.domain.model.ClimbingGym;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import java.util.Iterator;
-import java.util.List;
 import java.util.Optional;
 
 @Repository

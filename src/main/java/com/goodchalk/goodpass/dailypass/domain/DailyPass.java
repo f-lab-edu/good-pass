@@ -1,4 +1,4 @@
-package com.goodchalk.goodpass.domain.model;
+package com.goodchalk.goodpass.dailypass.domain;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;

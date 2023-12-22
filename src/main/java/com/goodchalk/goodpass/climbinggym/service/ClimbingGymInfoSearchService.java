@@ -1,8 +1,8 @@
 package com.goodchalk.goodpass.climbinggym.service;
 
-import com.goodchalk.goodpass.domain.model.ClimbingGym;
+import com.goodchalk.goodpass.climbinggym.domain.ClimbingGym;
 import com.goodchalk.goodpass.exception.GoodPassBusinessException;
-import com.goodchalk.goodpass.domain.repository.ClimbingGymRepository;
+import com.goodchalk.goodpass.climbinggym.domain.ClimbingGymRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,8 @@ public class ClimbingGymInfoSearchService {
 
     public String findClimbingGymName(Long climbingGymId) {
         Optional<ClimbingGym> climbingGymOptional = climbingGymRepository.findById(climbingGymId);
-        ClimbingGym climbingGym = climbingGymOptional.orElseThrow(GoodPassBusinessException::new);
+        ClimbingGym climbingGym = climbingGymOptional.orElseThrow(()
+                -> new GoodPassBusinessException("등록되지 않은 클라이밍장 ID 입니다. id=" + climbingGymId));
         return climbingGym.getClimbingGymName();
     }
 }

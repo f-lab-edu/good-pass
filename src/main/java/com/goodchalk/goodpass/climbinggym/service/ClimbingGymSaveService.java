@@ -2,8 +2,8 @@ package com.goodchalk.goodpass.climbinggym.service;
 
 import com.goodchalk.goodpass.climbinggym.service.dto.ClimbingGymSaveDto;
 import com.goodchalk.goodpass.exception.GoodPassBusinessException;
-import com.goodchalk.goodpass.domain.model.ClimbingGym;
-import com.goodchalk.goodpass.domain.repository.ClimbingGymRepository;
+import com.goodchalk.goodpass.climbinggym.domain.ClimbingGym;
+import com.goodchalk.goodpass.climbinggym.domain.ClimbingGymRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,7 @@ public class ClimbingGymSaveService {
         String climbingGymName = climbingGym.getClimbingGymName();
         Optional<ClimbingGym> registeredClimbingGym = climbingGymRepository.findByClimbingGymName(climbingGymName);
         if (registeredClimbingGym.isPresent()) {
-            throw new GoodPassBusinessException();
+            throw new GoodPassBusinessException("중복된 클라이밍장 이름입니다. climbingGymName="+climbingGymName);
         }
 
         return climbingGymRepository.save(climbingGym);

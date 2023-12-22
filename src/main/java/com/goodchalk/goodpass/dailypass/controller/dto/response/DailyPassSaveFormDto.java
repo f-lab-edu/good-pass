@@ -7,4 +7,5 @@ import lombok.RequiredArgsConstructor;
 @Builder
 public class DailyPassSaveFormDto {
     private final Long climbingGymId;
+    private final String climbingGymName;
 }

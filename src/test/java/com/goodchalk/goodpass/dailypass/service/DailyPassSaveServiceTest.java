@@ -1,24 +1,18 @@
 package com.goodchalk.goodpass.dailypass.service;
 
-import com.goodchalk.goodpass.GoodpassApplication;
 import com.goodchalk.goodpass.TestConfig;
 import com.goodchalk.goodpass.dailypass.service.dto.DailyPassSaveDto;
-import com.goodchalk.goodpass.domain.model.ClimbingGym;
-import com.goodchalk.goodpass.domain.model.DailyPass;
-import com.goodchalk.goodpass.domain.repository.ClimbingGymRepository;
-import com.goodchalk.goodpass.domain.repository.DailyPassRepository;
-import com.goodchalk.goodpass.domain.repository.stub.ClimbingGymMemoryRepository;
-import com.goodchalk.goodpass.domain.repository.stub.DailyPassMemoryRepository;
+import com.goodchalk.goodpass.climbinggym.domain.ClimbingGym;
+import com.goodchalk.goodpass.dailypass.domain.DailyPass;
+import com.goodchalk.goodpass.climbinggym.domain.ClimbingGymRepository;
+import com.goodchalk.goodpass.dailypass.domain.DailyPassRepository;
 import com.goodchalk.goodpass.exception.GoodPassBusinessException;
-import lombok.RequiredArgsConstructor;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.data.repository.NoRepositoryBean;
 
 import java.util.Optional;
 
@@ -39,6 +33,7 @@ class DailyPassSaveServiceTest {
         climbingGymRepository.deleteAll();
     }
 
+    @DisplayName("등록되지 않은 클라이밍장에 일일이용서 등록이 불가능한가?")
     @Test
     void saveWithNotRegisteredClimbingGym() {
         DailyPassSaveDto dailyPassSaveDto = DailyPassSaveDto.builder()
@@ -50,6 +45,7 @@ class DailyPassSaveServiceTest {
                 () -> dailyPassSaveService.save(dailyPassSaveDto));
     }
 
+    @DisplayName("등록된 클라이밍장에 일일이용서 등록이 가능한가?")
     @Test
     void saveWithRegisteredClimbingGym() {
         ClimbingGym climbingGym = ClimbingGym.builder()

@@ -1,8 +1,7 @@
 package com.goodchalk.goodpass.dailypass.controller.dto.request;
 
 import com.goodchalk.goodpass.dailypass.service.dto.DailyPassSaveDto;
-import com.goodchalk.goodpass.domain.model.ClimbingGym;
-import com.goodchalk.goodpass.domain.model.Contract;
+import com.goodchalk.goodpass.dailypass.domain.Contract;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

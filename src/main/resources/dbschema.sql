@@ -9,6 +9,8 @@ create table `CLIMBING_GYM`(
                                `owner` varchar(10),
                                `contact` varchar(13),
                                `email` varchar(30),
+                               `message` varchar(100), -- 여기다 하는 게 맞을까요...?
+                               -- 클라이밍장 정보를 커스터마이징해서 보여주는 서비스가 많아지면 table을 추가하는 것도 괜찮아보이거든요.
                                CONSTRAINT `CLIMBING_GYM_PK` PRIMARY KEY(`id`)
 );
 
@@ -27,6 +29,7 @@ create table `DAILY_PASS`
     `submit_time` datetime,
     CONSTRAINT `DAILY_PASS_PK` PRIMARY KEY (`id`)
 );
+
 
 select * from CLIMBING_GYM;
 

@@ -1,10 +1,10 @@
 package com.goodchalk.goodpass.dailypass.service;
 
-import com.goodchalk.goodpass.domain.model.ClimbingGym;
-import com.goodchalk.goodpass.domain.model.DailyPass;
-import com.goodchalk.goodpass.domain.model.SignatureStatus;
-import com.goodchalk.goodpass.domain.repository.ClimbingGymRepository;
-import com.goodchalk.goodpass.domain.repository.DailyPassRepository;
+import com.goodchalk.goodpass.climbinggym.domain.ClimbingGym;
+import com.goodchalk.goodpass.dailypass.domain.DailyPass;
+import com.goodchalk.goodpass.dailypass.domain.SignatureStatus;
+import com.goodchalk.goodpass.climbinggym.domain.ClimbingGymRepository;
+import com.goodchalk.goodpass.dailypass.domain.DailyPassRepository;
 import com.goodchalk.goodpass.dailypass.service.dto.DailyPassSaveDto;
 import com.goodchalk.goodpass.exception.GoodPassBusinessException;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +27,7 @@ public class DailyPassSaveService {
         Long climbingGymId = dailyPassSaveDto.getClimbingGymId();
 
         Optional<ClimbingGym> climbingGymOptional = climbingGymRepository.findById(climbingGymId);
-        climbingGymOptional.orElseThrow(GoodPassBusinessException::new);
+        climbingGymOptional.orElseThrow(()->new GoodPassBusinessException("등록된 클라이밍장이 없습니다. id="+climbingGymId));
 
         DailyPass noSignatureDailyPass = creatNoSignatureDailyPass(dailyPassSaveDto);
 
