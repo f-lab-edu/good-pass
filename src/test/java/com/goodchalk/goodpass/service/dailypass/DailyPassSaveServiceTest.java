@@ -1,6 +1,7 @@
 package com.goodchalk.goodpass.service.dailypass;
 
 import com.goodchalk.goodpass.GoodpassApplication;
+import com.goodchalk.goodpass.TestConfig;
 import com.goodchalk.goodpass.dailypass.service.DailyPassSaveService;
 import com.goodchalk.goodpass.dailypass.service.dto.DailyPassSaveDto;
 import com.goodchalk.goodpass.domain.model.ClimbingGym;
@@ -20,7 +21,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest(classes = GoodpassApplication.class)
+@SpringBootTest(classes = TestConfig.class)
 class DailyPassSaveServiceTest {
     @Autowired
     private DailyPassSaveService dailyPassSaveService;
@@ -41,12 +42,13 @@ class DailyPassSaveServiceTest {
     void save() {
         DailyPassSaveDto dailyPassSaveDto = DailyPassSaveDto.builder()
                 .userName("임동규")
+                .climbingGymId(1L)
                 .dailyUseGymContract(Contract.AGREE)
                 .submitTime(LocalDateTime.now())
                 .build();
 
         Assertions.assertThrows(GoodPassBusinessException.class, () -> {
-            dailyPassSaveService.save(0L, dailyPassSaveDto);
+            dailyPassSaveService.save(dailyPassSaveDto);
         });
     }
 
@@ -60,11 +62,12 @@ class DailyPassSaveServiceTest {
 
         DailyPassSaveDto dailyPassSaveDto = DailyPassSaveDto.builder()
                 .userName("임동규")
+                .climbingGymId(climbingGymId)
                 .dailyUseGymContract(Contract.AGREE)
                 .submitTime(LocalDateTime.now())
                 .build();
 
-        dailyPassSaveService.save(climbingGymId, dailyPassSaveDto);
+        dailyPassSaveService.save(dailyPassSaveDto);
 
         Optional<DailyPass> dailyPassOptional = dailyPassRepository.findByUserName("임동규");
         DailyPass dailyPass = dailyPassOptional.orElseThrow();

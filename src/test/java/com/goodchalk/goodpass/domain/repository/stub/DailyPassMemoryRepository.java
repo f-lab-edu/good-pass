@@ -1,13 +1,14 @@
-package com.goodchalk.goodpass.domain.repository;
+package com.goodchalk.goodpass.domain.repository.stub;
 
 import com.goodchalk.goodpass.domain.model.DailyPass;
+import com.goodchalk.goodpass.domain.repository.DailyPassRepository;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class DailyPassMemoryRepository implements DailyPassRepository{
+public class DailyPassMemoryRepository implements DailyPassRepository {
     private final Map<Long, DailyPass> dailyPassMap = new HashMap<>();
     private Long autoIncrease = 0L;
 
@@ -40,6 +41,7 @@ public class DailyPassMemoryRepository implements DailyPassRepository{
         DailyPass targetDailyPass = DailyPass.builder()
                 .id(++autoIncrease)
                 .climbingGymId(dailyPass.getClimbingGymId())
+                .signatureStatus(dailyPass.getSignatureStatus())
                 .userName(dailyPass.getUserName())
                 .contact(dailyPass.getContact())
                 .dailyUseContract(dailyPass.getDailyUseContract())

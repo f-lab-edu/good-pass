@@ -1,5 +1,6 @@
 package com.goodchalk.goodpass.climbinggym.service;
 
+import com.goodchalk.goodpass.climbinggym.service.dto.ClimbingGymSaveDto;
 import com.goodchalk.goodpass.exception.GoodPassBusinessException;
 import com.goodchalk.goodpass.domain.model.ClimbingGym;
 import com.goodchalk.goodpass.domain.repository.ClimbingGymRepository;

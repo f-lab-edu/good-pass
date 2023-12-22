@@ -1,6 +1,7 @@
-package com.goodchalk.goodpass.domain.repository;
+package com.goodchalk.goodpass.domain.repository.stub;
 
 import com.goodchalk.goodpass.domain.model.ClimbingGym;
+import com.goodchalk.goodpass.domain.repository.ClimbingGymRepository;
 import lombok.RequiredArgsConstructor;
 
 import java.util.HashMap;
@@ -41,6 +42,9 @@ public class ClimbingGymMemoryRepository implements ClimbingGymRepository {
 
     @Override
     public Optional<ClimbingGym> findById(Long climbingGymId) {
+        if (!climbingGymHashMap.containsKey(climbingGymId)) {
+            return Optional.empty();
+        }
         return Optional.of(climbingGymHashMap.get(climbingGymId));
     }
 

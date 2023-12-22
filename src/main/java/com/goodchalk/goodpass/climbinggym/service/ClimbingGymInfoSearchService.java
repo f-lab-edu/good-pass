@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ClimbingGymSearchService {
+public class ClimbingGymInfoSearchService {
     private final ClimbingGymRepository climbingGymRepository;
 
     public String findClimbingGymName(Long climbingGymId) {

@@ -1,13 +1,13 @@
 package com.goodchalk.goodpass.domain.repository;
 
 import com.goodchalk.goodpass.domain.model.DailyPass;
+import com.goodchalk.goodpass.domain.model.SignatureStatus;
+import com.goodchalk.goodpass.domain.repository.stub.DailyPassMemoryRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class DailyPassRepositoryTest {
     private final DailyPassRepository dailyPassRepository = new DailyPassMemoryRepository();
@@ -66,5 +66,20 @@ class DailyPassRepositoryTest {
         Assertions.assertThat(dailyPasses1.size()).isEqualTo(2);
         Assertions.assertThat(dailyPasses2.size()).isEqualTo(1);
         Assertions.assertThat(dailyPasses3.size()).isEqualTo(0);
+    }
+
+    @Test
+    void addSignatureFieldColumn() {
+        DailyPass dailyPass = DailyPass.builder()
+                .climbingGymId(1L)
+                .userName("임동규")
+                .signatureStatus(SignatureStatus.SUBMIT)
+                .build();
+        DailyPass savedDailyPass = dailyPassRepository.save(dailyPass);
+
+        Optional<DailyPass> dailyPassOptional = dailyPassRepository.findById(savedDailyPass.getId());
+        DailyPass actualDailyPass = dailyPassOptional.orElseThrow(RuntimeException::new);
+
+        Assertions.assertThat(actualDailyPass.getSignatureStatus()).isEqualTo(SignatureStatus.SUBMIT);
     }
 }
