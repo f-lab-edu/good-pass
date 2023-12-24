@@ -9,7 +9,6 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Getter
-@Builder
 public class DailyPassesDto {
     private final List<DailyPass> dailyPasses;
 }

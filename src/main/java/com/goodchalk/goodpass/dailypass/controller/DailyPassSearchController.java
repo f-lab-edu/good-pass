@@ -1,7 +1,7 @@
 package com.goodchalk.goodpass.dailypass.controller;
 
 import com.goodchalk.goodpass.dailypass.controller.dto.response.DailyPassesDto;
-import com.goodchalk.goodpass.dailypass.service.DailyPassSearchService;
+import com.goodchalk.goodpass.dailypass.service.DailyPassesSearchService;
 import com.goodchalk.goodpass.dailypass.domain.DailyPass;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,16 +14,13 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@Slf4j
-@RequestMapping("/admin/daily-pass/{climbingGymId}")
-public class DailyPassAdminController {
-    private final DailyPassSearchService dailyPassSearchService;
+@RequestMapping("/daily-passes/{climbingGymId}")
+public class DailyPassSearchController {
+    private final DailyPassesSearchService dailyPassesSearchService;
     @GetMapping
     public DailyPassesDto searchClimbingGymDailyPasses(@PathVariable("climbingGymId") Long climbingGymId) {
-        List<DailyPass> dailyPasses = dailyPassSearchService.searchByClimbingGymId(climbingGymId);
+        List<DailyPass> dailyPasses = dailyPassesSearchService.searchByClimbingGymId(climbingGymId);
 
-        return DailyPassesDto.builder()
-                .dailyPasses(dailyPasses)
-                .build();
+        return new DailyPassesDto(dailyPasses);
     }
 }

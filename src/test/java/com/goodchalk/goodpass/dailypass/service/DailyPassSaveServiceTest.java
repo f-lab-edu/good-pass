@@ -1,7 +1,7 @@
 package com.goodchalk.goodpass.dailypass.service;
 
 import com.goodchalk.goodpass.TestConfig;
-import com.goodchalk.goodpass.dailypass.service.dto.DailyPassSaveDto;
+import com.goodchalk.goodpass.dailypass.service.dto.DailyPassCreator;
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGym;
 import com.goodchalk.goodpass.dailypass.domain.DailyPass;
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGymRepository;
@@ -36,13 +36,13 @@ class DailyPassSaveServiceTest {
     @DisplayName("등록되지 않은 클라이밍장에 일일이용서 등록이 불가능한가?")
     @Test
     void saveWithNotRegisteredClimbingGym() {
-        DailyPassSaveDto dailyPassSaveDto = DailyPassSaveDto.builder()
+        DailyPassCreator dailyPassCreator = DailyPassCreator.builder()
                 .climbingGymId(1L)
                 .userName("임동규")
                 .build();
 
         assertThrows(GoodPassBusinessException.class,
-                () -> dailyPassSaveService.save(dailyPassSaveDto));
+                () -> dailyPassSaveService.save(dailyPassCreator));
     }
 
     @DisplayName("등록된 클라이밍장에 일일이용서 등록이 가능한가?")
@@ -53,12 +53,12 @@ class DailyPassSaveServiceTest {
 
         ClimbingGym savedClimbingGym = climbingGymRepository.save(climbingGym);
         Long id = savedClimbingGym.getId();
-        DailyPassSaveDto dailyPassSaveDto = DailyPassSaveDto.builder()
+        DailyPassCreator dailyPassCreator = DailyPassCreator.builder()
                 .climbingGymId(id)
                 .userName("임동규")
                 .build();
 
-        DailyPass savedDailyPass = dailyPassSaveService.save(dailyPassSaveDto);
+        DailyPass savedDailyPass = dailyPassSaveService.save(dailyPassCreator);
         Optional<DailyPass> dailyPassOptional = dailyPassRepository.findById(savedDailyPass.getId());
         DailyPass dailyPass = dailyPassOptional.orElseThrow(RuntimeException::new);
 

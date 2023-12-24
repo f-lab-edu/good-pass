@@ -9,6 +9,7 @@ import com.goodchalk.goodpass.domain.repository.stub.ClimbingGymMemoryRepository
 import com.goodchalk.goodpass.domain.repository.stub.DailyPassMemoryRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 //아래 configuration 파일을 service가 추가될 때마다 추가하는 게 쉽지 않습니다.
 //수동빈과 자동빈에서 수동빈이 우선권을 가지는 것으로 알고 있습니다.
@@ -35,11 +36,13 @@ public class TestConfig {
     }
 
     @Bean
+    @Primary
     public DailyPassRepository dailyPassRepository() {
         return new DailyPassMemoryRepository();
     }
 
     @Bean
+    @Primary
     public ClimbingGymRepository climbingGymRepository() {
         return new ClimbingGymMemoryRepository();
     }

@@ -20,12 +20,17 @@ public class ClimbingGym {
     private String message;
 
     @Builder
-    public ClimbingGym(String climbingGymName, String address, String owner, String contact, String email, String message) {
+    public ClimbingGym(Long id, String climbingGymName, String address, String owner, String contact, String email, String message) {
+        this.id = id;
         this.climbingGymName = climbingGymName;
         this.address = address;
         this.owner = owner;
         this.contact = contact;
         this.email = email;
         this.message = message;
+    }
+
+    public ClimbingGymContentMessage toContentMessage() {
+        return new ClimbingGymContentMessage(climbingGymName, message);
     }
 }

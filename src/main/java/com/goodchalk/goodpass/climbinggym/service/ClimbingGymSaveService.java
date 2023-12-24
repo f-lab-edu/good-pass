@@ -1,6 +1,6 @@
 package com.goodchalk.goodpass.climbinggym.service;
 
-import com.goodchalk.goodpass.climbinggym.service.dto.ClimbingGymSaveDto;
+import com.goodchalk.goodpass.climbinggym.service.dto.ClimbingGymCreator;
 import com.goodchalk.goodpass.exception.GoodPassBusinessException;
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGym;
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGymRepository;
@@ -14,8 +14,8 @@ import java.util.Optional;
 public class ClimbingGymSaveService {
     private final ClimbingGymRepository climbingGymRepository;
 
-    public ClimbingGym register(ClimbingGymSaveDto climbingGymSaveDto) {
-        ClimbingGym climbingGym = climbingGymSaveDto.createClimbingGym();
+    public ClimbingGym register(ClimbingGymCreator climbingGymCreator) {
+        ClimbingGym climbingGym = climbingGymCreator.create();
 
         String climbingGymName = climbingGym.getClimbingGymName();
         Optional<ClimbingGym> registeredClimbingGym = climbingGymRepository.findByClimbingGymName(climbingGymName);
