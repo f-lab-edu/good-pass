@@ -20,7 +20,7 @@ class ClimbingGymInfoSearchServiceTest {
         climbingGymRepository.deleteAll();
     }
 
-    @DisplayName("클라이밍장ID를 통해 클라이밍장 이름 검색이 제대로 수행되는가?")
+    @DisplayName("클라이밍장 id가 주어졌다면 클라이밍장 상호명을 검색가능한가?")
     @Test
     void findClimbingGymName() {
         ClimbingGym climbingGym = ClimbingGym.builder()
@@ -33,7 +33,7 @@ class ClimbingGymInfoSearchServiceTest {
         Assertions.assertThat(climbingGymName).isEqualTo("그래비티 클라이밍");
     }
 
-    @DisplayName("등로된 클라이밍장이 아닐 때 예외처리가 수행되는가?")
+    @DisplayName("클라이밍장이 등록되지 않았다면 상호명을 검색할 때 예외처리가 수행되는가?")
     @Test
     void findClimbingGymNameFail() {
         assertThrows(GoodPassBusinessException.class,

@@ -28,7 +28,7 @@ class DailyPassSaveServiceTest {
         climbingGymRepository.deleteAll();
     }
 
-    @DisplayName("등록되지 않은 클라이밍장에 일일이용서 등록이 불가능한가?")
+    @DisplayName("클라이밍장이 등록되지 않았을 때 일일이용서를 등록한다면 예외가 발생하는가?")
     @Test
     void saveWithNotRegisteredClimbingGym() {
         DailyPassCreator dailyPassCreator = DailyPassCreator.builder()
@@ -40,7 +40,7 @@ class DailyPassSaveServiceTest {
                 () -> dailyPassSaveService.save(dailyPassCreator));
     }
 
-    @DisplayName("등록된 클라이밍장에 일일이용서 등록이 가능한가?")
+    @DisplayName("클라이밍장이 등록되어 있을 때 일일이용서를 등록한다면 정상처리 되는가?")
     @Test
     void saveWithRegisteredClimbingGym() {
         ClimbingGym climbingGym = ClimbingGym.builder()
