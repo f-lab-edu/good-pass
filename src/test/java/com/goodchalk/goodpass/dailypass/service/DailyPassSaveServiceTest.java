@@ -1,31 +1,26 @@
 package com.goodchalk.goodpass.dailypass.service;
 
-import com.goodchalk.goodpass.TestConfig;
-import com.goodchalk.goodpass.dailypass.service.dto.DailyPassCreator;
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGym;
-import com.goodchalk.goodpass.dailypass.domain.DailyPass;
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGymRepository;
+import com.goodchalk.goodpass.dailypass.domain.DailyPass;
 import com.goodchalk.goodpass.dailypass.domain.DailyPassRepository;
+import com.goodchalk.goodpass.dailypass.service.dto.DailyPassCreator;
+import com.goodchalk.goodpass.domain.repository.stub.ClimbingGymMemoryRepository;
+import com.goodchalk.goodpass.domain.repository.stub.DailyPassMemoryRepository;
 import com.goodchalk.goodpass.exception.GoodPassBusinessException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@SpringBootTest(classes = TestConfig.class)
 class DailyPassSaveServiceTest {
-    @Autowired
-    private DailyPassSaveService dailyPassSaveService;
-    @Autowired
-    private DailyPassRepository dailyPassRepository;
-    @Autowired
-    private ClimbingGymRepository climbingGymRepository;
+    private final DailyPassRepository dailyPassRepository = new DailyPassMemoryRepository();
+    private final ClimbingGymRepository climbingGymRepository = new ClimbingGymMemoryRepository();
+    private final DailyPassSaveService dailyPassSaveService = new DailyPassSaveService(dailyPassRepository, climbingGymRepository);
 
     @BeforeEach
     void beforeEach() {
