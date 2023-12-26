@@ -14,7 +14,10 @@ class ClimbingGymSaveServiceTest {
     private final ClimbingGymRepository climbingGymRepository = new ClimbingGymMemoryRepository();
     private final ClimbingGymSaveService climbingGymSaveService = new ClimbingGymSaveService(climbingGymRepository);
 
-    @DisplayName("클라이밍장 등록이 서비스가 정상적으로 수행되는가?")
+    //아래 코드 같은 경우네는 given when then이 분명하지 하지 않은데 이럴 때 어떻게 해야하는가?
+    //저장이 정상적으로 수행되었는지를 체크하려면 조회에 대한 기능을 같이 검증해야 한다...
+    //기능 검증이 완전히 분리가 안 되고 있다.
+    @DisplayName("클라이밍장을 등록했을 때 등록된 클라이밍장이 정상적으로 조회되는가?")
     @Test
     void register() {
         ClimbingGymCreator climbingGymCreator = ClimbingGymCreator.builder()
