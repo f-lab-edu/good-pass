@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RequiredArgsConstructor
 public class ClimbingGymNameSearchController {
     private final ClimbingGymInfoSearchService climbingGymInfoSearchService;
-    @GetMapping("/{climbingGymId}")
+    @GetMapping("/climbingGymName/{climbingGymId}")
     public ClimbingGymNameDto showSaveForm(@PathVariable("climbingGymId") Long climbingGymId) {
         String climbingGymName = climbingGymInfoSearchService.findClimbingGymName(climbingGymId);
         return new ClimbingGymNameDto(climbingGymId, climbingGymName);

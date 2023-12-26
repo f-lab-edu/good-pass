@@ -9,16 +9,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/daily-passes/{climbingGymId}")
+@RequestMapping("/daily-passes")
 public class DailyPassSearchController {
     private final DailyPassesSearchService dailyPassesSearchService;
     @GetMapping
-    public DailyPassesDto searchClimbingGymDailyPasses(@PathVariable("climbingGymId") Long climbingGymId) {
+    public DailyPassesDto searchClimbingGymDailyPasses(@RequestParam("climbingGymId") Long climbingGymId) {
         List<DailyPass> dailyPasses = dailyPassesSearchService.searchByClimbingGymId(climbingGymId);
 
         return new DailyPassesDto(dailyPasses);
