@@ -1,5 +1,6 @@
 package com.goodchalk.goodpass.dailypass.domain;
 
+import com.goodchalk.goodpass.exception.GoodPassBusinessException;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
@@ -30,5 +31,21 @@ public class DailyPass {
         this.dailyUseContract = dailyUseContract;
         this.privacyContract = privacyContract;
         this.submitTime = submitTime;
+    }
+
+    public DailyPass submittedSignature() {
+        if (signatureStatus == SignatureStatus.SUBMIT) {
+            throw new GoodPassBusinessException("이미 서명이 제출된 일일이용동의서입니다.");
+        }
+        return DailyPass.builder()
+                .id(id)
+                .climbingGymId(climbingGymId)
+                .signatureStatus(SignatureStatus.SUBMIT)
+                .userName(userName)
+                .contact(contact)
+                .dailyUseContract(dailyUseContract)
+                .privacyContract(privacyContract)
+                .submitTime(LocalDateTime.now())
+                .build();
     }
 }
