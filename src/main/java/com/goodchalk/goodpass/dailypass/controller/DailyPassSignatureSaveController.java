@@ -17,14 +17,16 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("daily-pass/signatrue/{dailyPassId}")
-public class DailyPassSignatrueSaveController {
+@RequestMapping("daily-pass/signature/{dailyPassId}")
+public class DailyPassSignatureSaveController {
     private final ClimbingGymContentMessageSearchService climbingGymContentMessageSearchService;
     private final ClimbingGymContentPosterSearchService climbingGymContentPosterSearchService;
     private final SignatureSaveService signatureSaveService;
     private final DailyPassSearchService dailyPassSearchService;
     @GetMapping
-    public ClimbingGymContentResponseDto showSaveComplete(@PathVariable("dailyPassId") Long climbingGymId) {
+    public ClimbingGymContentResponseDto showSaveComplete(@PathVariable("dailyPassId") Long dailyPassId) {
+        DailyPass dailyPass = dailyPassSearchService.findDailyPass(dailyPassId);
+        Long climbingGymId = dailyPass.getClimbingGymId();
         ClimbingGymContentMessage climbingGymContentMessage = climbingGymContentMessageSearchService.searchBy(climbingGymId);
         ClimbingGymContentPoster climbingGymContentPoster = climbingGymContentPosterSearchService.findByClimbingGymId(climbingGymId);
 
