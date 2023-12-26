@@ -1,0 +1,24 @@
+spring:
+  profiles:
+    active: test
+
+  h2:
+    console:
+      enabled: true
+handlebars:
+  suffix: .html
+
+amazons3:
+  endPoint: "http://localhost:9000"
+  regionName: "ap-northeast-2"
+  accessKey: ""
+  secretKey: ""
+
+logging:
+  level:
+    org:
+      springframework:
+        jdbc:
+          core:
+            JdbcTemplate: debug
+

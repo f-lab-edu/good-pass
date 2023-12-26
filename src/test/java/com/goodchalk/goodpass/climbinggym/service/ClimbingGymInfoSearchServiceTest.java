@@ -1,8 +1,8 @@
 package com.goodchalk.goodpass.climbinggym.service;
 
-import com.goodchalk.goodpass.TestConfig;
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGym;
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGymRepository;
+import com.goodchalk.goodpass.climbinggym.service.ClimbingGymInfoSearchService;
 import com.goodchalk.goodpass.exception.GoodPassBusinessException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,15 +13,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest(classes = TestConfig.class)
+@SpringBootTest
 class ClimbingGymInfoSearchServiceTest {
+
     @Autowired
     private ClimbingGymInfoSearchService climbingGymInfoSearchService;
+
     @Autowired
     private ClimbingGymRepository climbingGymRepository;
 
     @BeforeEach
-    public void beforeEach() {
+    void setUp() {
         climbingGymRepository.deleteAll();
     }
 

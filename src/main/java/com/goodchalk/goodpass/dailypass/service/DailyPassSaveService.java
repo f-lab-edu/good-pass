@@ -33,4 +33,13 @@ public class DailyPassSaveService {
 
         return dailyPassRepository.save(noSignatureDailyPass);
     }
+
+    public DailyPass save(Long a) {
+        DailyPass dailyPassSignatureStatusUpdate = DailyPass.builder()
+                .id(a)
+                .signatureStatus(SignatureStatus.SUBMIT)
+                .build();
+
+        return dailyPassRepository.save(dailyPassSignatureStatusUpdate);
+    }
 }

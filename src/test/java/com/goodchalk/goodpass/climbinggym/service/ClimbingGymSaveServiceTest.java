@@ -1,10 +1,10 @@
 package com.goodchalk.goodpass.climbinggym.service;
 
-import com.goodchalk.goodpass.TestConfig;
 import com.goodchalk.goodpass.climbinggym.service.dto.ClimbingGymCreator;
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGym;
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGymRepository;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +12,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Optional;
 
-@SpringBootTest(classes = TestConfig.class)
+@SpringBootTest
 class ClimbingGymSaveServiceTest {
     @Autowired
     private ClimbingGymSaveService climbingGymSaveService;
     @Autowired
     private ClimbingGymRepository climbingGymRepository;
 
+    @BeforeEach
+    void setUp() {
+        climbingGymRepository.deleteAll();
+    }
     @DisplayName("클라이밍장 등록이 서비스가 정상적으로 수행되는가?")
     @Test
     void register() {

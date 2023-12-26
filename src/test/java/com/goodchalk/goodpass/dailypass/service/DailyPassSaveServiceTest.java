@@ -1,6 +1,5 @@
 package com.goodchalk.goodpass.dailypass.service;
 
-import com.goodchalk.goodpass.TestConfig;
 import com.goodchalk.goodpass.dailypass.service.dto.DailyPassCreator;
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGym;
 import com.goodchalk.goodpass.dailypass.domain.DailyPass;
@@ -12,13 +11,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@SpringBootTest(classes = TestConfig.class)
+@SpringBootTest
 class DailyPassSaveServiceTest {
     @Autowired
     private DailyPassSaveService dailyPassSaveService;
@@ -28,11 +28,10 @@ class DailyPassSaveServiceTest {
     private ClimbingGymRepository climbingGymRepository;
 
     @BeforeEach
-    void beforeEach() {
-        dailyPassRepository.deleteAll();
+    void setUp() {
         climbingGymRepository.deleteAll();
+        dailyPassRepository.deleteAll();
     }
-
     @DisplayName("등록되지 않은 클라이밍장에 일일이용서 등록이 불가능한가?")
     @Test
     void saveWithNotRegisteredClimbingGym() {

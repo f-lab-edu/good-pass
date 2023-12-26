@@ -1,15 +1,13 @@
-package com.goodchalk.goodpass.domain.repository.stub;
+package com.goodchalk.goodpass.climbinggym.domain.stub;
 
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGym;
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGymRepository;
-import lombok.RequiredArgsConstructor;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-@RequiredArgsConstructor
-public class ClimbingGymMemoryRepository implements ClimbingGymRepository {
+public class ClimbingGymStubRepository implements ClimbingGymRepository {
     private Long autoIncrement = 0L;
     private final Map<Long, ClimbingGym> climbingGymHashMap = new HashMap<>();
 

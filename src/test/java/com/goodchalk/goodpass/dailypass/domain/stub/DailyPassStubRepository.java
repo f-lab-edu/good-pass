@@ -1,4 +1,4 @@
-package com.goodchalk.goodpass.domain.repository.stub;
+package com.goodchalk.goodpass.dailypass.domain.stub;
 
 import com.goodchalk.goodpass.dailypass.domain.DailyPass;
 import com.goodchalk.goodpass.dailypass.domain.DailyPassRepository;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class DailyPassMemoryRepository implements DailyPassRepository {
+public class DailyPassStubRepository implements DailyPassRepository {
     private final Map<Long, DailyPass> dailyPassMap = new HashMap<>();
     private Long autoIncrease = 0L;
 
