@@ -38,9 +38,4 @@ public class SignatureAwsS3RepositoryImpl implements SignatureRepository {
             throw new GoodPassSystemException(e);
         }
     }
-
-    @Override
-    public boolean exist(Long dailyPassId) {
-        throw new GoodPassSystemException("미구현");
-    }
 }
