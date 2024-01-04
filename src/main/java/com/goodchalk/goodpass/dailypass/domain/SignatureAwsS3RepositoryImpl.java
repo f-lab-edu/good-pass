@@ -20,18 +20,15 @@ public class SignatureAwsS3RepositoryImpl implements SignatureRepository {
         OBJECT_METADATA.setContentType("image/jpeg");
     }
 
+    private final SignatureFileNameConverter signatureFileNameConverter = new SignatureFileNameConverter(15);
+
     private final AmazonS3 amazonS3Source;
 
     @Override
     public void upload(Signature signature) {
-        Long signatureId = signature.getSignatureId();
-        InputStream signatureInputStream = signature.getSignatureInputStream();
-
-        //signature 객체 넣고 싶은 부분이지만 일부러 넣지 않음
-        //file system의 체계를 관장하는 것은 signatrueRepository가 담당할 책임이 있다고 판단
-        String signatureFileName = String.format("%10d", signatureId);
+        String signatureFileName = signatureFileNameConverter.convert(signature);
         try {
-            amazonS3Source.putObject(BUCKET_NAME, FOLDER_NAME+signatureFileName, signatureInputStream, OBJECT_METADATA);
+            amazonS3Source.putObject(BUCKET_NAME, FOLDER_NAME + signatureFileName, signature.getSignatureInputStream(), OBJECT_METADATA);
         } catch (AmazonS3Exception e) {
             throw new GoodPassSystemException(e);
         } catch(SdkClientException e) {
