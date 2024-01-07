@@ -27,6 +27,11 @@ public class LocalFileStore implements FileStore {
         }
     }
 
+    @Override
+    public String getUrl(String bucketName, String directoryPath, String fileName) {
+        return null;
+    }
+
     private OutputStream toBufferedOutputStream(File targetFilePath) {
         try {
             OutputStream fos = new FileOutputStream(targetFilePath);
