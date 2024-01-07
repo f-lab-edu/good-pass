@@ -17,13 +17,9 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class SignatureSaveService {
     private final SignatureRepository signatureRepository;
-    private final SignatureFileNameConverter signatureFileNameConverter = new SignatureFileNameConverter(15);
 
     public void save(SignatureDto signatureDto) {
         Signature signature = signatureDto.toSignature();
-        String signatureFileName = signatureFileNameConverter.convert(signature);
-
-        InputStream signatureInputStream = signature.getSignatureInputStream();
-        signatureRepository.upload(signatureFileName, signatureInputStream);
+        signatureRepository.upload(signature);
     }
 }

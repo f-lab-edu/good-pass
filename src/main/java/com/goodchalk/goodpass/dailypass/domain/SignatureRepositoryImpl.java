@@ -12,6 +12,7 @@ import java.io.InputStream;
 @RequiredArgsConstructor
 public class SignatureRepositoryImpl implements SignatureRepository{
     private final FileStore fileStore;
+    private final SignatureFileNameConverter signatureFileNameConverter = new SignatureFileNameConverter(15);
 
     @Override
     public void upload(String signatureFileName, InputStream signatureInputStream) {
@@ -22,5 +23,11 @@ public class SignatureRepositoryImpl implements SignatureRepository{
         } catch (IOException ioException) {
             throw new GoodPassSystemException(ioException);
         }
+    }
+
+    @Override
+    public void upload(Signature signature) {
+        String signatureFileName = signatureFileNameConverter.convert(signature);
+        fileStore.upload("good-pass", "daily-pass", signatureFileName, signature.getSignatureInputStream());
     }
 }

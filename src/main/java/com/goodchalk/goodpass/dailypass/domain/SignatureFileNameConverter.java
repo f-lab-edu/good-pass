@@ -12,11 +12,9 @@ public class SignatureFileNameConverter {
 
     public String convert(Signature signature) {
         Long signatureId = signature.getSignatureId();
-        String decimalNumber = String.format("%d", signatureId);
 
-        int decimalNumberLength = decimalNumber.length();
-        if (decimalNumberLength > length) {
-            throw new GoodPassBusinessException("파일명으로 변환 시 id를 보장하지 않습니다. decimalNumber = " + decimalNumber);
+        if (signatureId.toString().length() > length) {
+            throw new GoodPassBusinessException("파일명으로 변환 시 id를 보장하지 않습니다. decimalNumber = " + signatureId);
         }
 
         return String.format("%0"+length+"d", signatureId);
