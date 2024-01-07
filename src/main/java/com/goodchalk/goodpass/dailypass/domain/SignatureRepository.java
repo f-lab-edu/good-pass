@@ -1,5 +1,7 @@
 package com.goodchalk.goodpass.dailypass.domain;
 
+import java.io.InputStream;
+
 public interface SignatureRepository {
-    void upload(Signature signature);
+    void upload(String signatureFileName, InputStream signatureInputStream);
 }

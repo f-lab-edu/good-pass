@@ -1,24 +1,23 @@
 package com.goodchalk.goodpass.dailypass.domain;
 
-import com.goodchalk.goodpass.dailypass.domain.stub.FileStore;
-import com.goodchalk.goodpass.dailypass.domain.stub.SignatureStubRepository;
+import com.goodchalk.goodpass.dailypass.domain.stub.LocalFileStore;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 class SignatureRepositoryTest {
-    //"user.dir"로 불러오는 거 괜찮은지?
-    private final FileStore fileStore = FileStore.createBy(System.getProperty("user.dir"));
-    private final SignatureRepository signatureRepository = new SignatureStubRepository(fileStore);
+    private final SignatureRepository signatureRepository = new SignatureRepositoryImpl(new LocalFileStore());
+    private final SignatureFileNameConverter signatureFileNameConverter = new SignatureFileNameConverter(15);
+
+    @DisplayName("서명 파일 stream이 주어졌을 때 fileStore에 정상적으로 upload하는가?")
     @Test
     void upload() {
         byte[] newImage = new byte[100];
         ByteArrayInputStream newImageInputStream = new ByteArrayInputStream(newImage);
-        signatureRepository.upload(new Signature(1L, newImageInputStream));
-        //업로드 되는 것까지 확인.
-        //junit으로 검증하는 방법??
+
+        String signatureFileName = signatureFileNameConverter.convert(new Signature(1L, newImageInputStream));
+
+        signatureRepository.upload(signatureFileName, newImageInputStream);
     }
 }

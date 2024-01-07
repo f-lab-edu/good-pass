@@ -5,15 +5,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class SignatureRepositoryIntegrationTest {
     @Autowired
     private SignatureRepository signatureRepository;
+    private final SignatureFileNameConverter signatureFileNameConverter = new SignatureFileNameConverter(15);
 
     @Test
-    void upload() {
-        System.out.println(signatureRepository);
-        signatureRepository.upload(new Signature(1L, new ByteArrayInputStream(new byte[100])));
+    public void uploadTest() {
+        byte[] bytes = new byte[100];
+        InputStream inputStream = new ByteArrayInputStream(bytes);
+        String signatureFileName = signatureFileNameConverter.convert(new Signature(123L, inputStream));
+        signatureRepository.upload(signatureFileName, inputStream);
     }
 }

@@ -2,6 +2,7 @@ package com.goodchalk.goodpass.dailypass.domain;
 
 import com.goodchalk.goodpass.exception.GoodPassBusinessException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.stream.IntStream;
 
@@ -22,6 +23,6 @@ public class SignatureFileNameConverter {
         StringBuilder stringBuilder = new StringBuilder();
         IntStream.range(0, frontZeroLength).forEach(i ->stringBuilder.append('0'));
 
-        return stringBuilder.toString() + decimalNumber;
+        return stringBuilder + decimalNumber;
     }
 }
