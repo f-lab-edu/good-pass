@@ -28,7 +28,9 @@ public class DailyPassesSearchService {
 
     public Page<DailyPass> searchByClimbingGymIdWIthPage(Long climbingGymId, int page, int size){
         Optional<ClimbingGym> climbingGymOptional = climbingGymRepository.findById(climbingGymId);
-        climbingGymOptional.orElseThrow(() -> new GoodPassBusinessException("등록되지 않은 클라이밍장입니다. climbingGymId=" + climbingGymId));
+        if (climbingGymOptional.isEmpty()) {
+            return Page.empty();
+        }
 
         PageRequest pageRequest = PageRequest.of(page, size);
         return dailyPassRepository.findByClimbingGymId(climbingGymId, pageRequest);

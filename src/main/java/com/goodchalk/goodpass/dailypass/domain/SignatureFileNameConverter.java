@@ -19,10 +19,6 @@ public class SignatureFileNameConverter {
             throw new GoodPassBusinessException("파일명으로 변환 시 id를 보장하지 않습니다. decimalNumber = " + decimalNumber);
         }
 
-        int frontZeroLength = length - decimalNumberLength;
-        StringBuilder stringBuilder = new StringBuilder();
-        IntStream.range(0, frontZeroLength).forEach(i ->stringBuilder.append('0'));
-
-        return stringBuilder + decimalNumber;
+        return String.format("%0"+length+"d", signatureId);
     }
 }
