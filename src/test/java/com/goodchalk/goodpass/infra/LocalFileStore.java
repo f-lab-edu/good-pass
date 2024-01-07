@@ -1,4 +1,4 @@
-package com.goodchalk.goodpass.dailypass.domain.stub;
+package com.goodchalk.goodpass.infra;
 
 import com.goodchalk.goodpass.infra.filestore.FileStore;
 
@@ -6,7 +6,7 @@ import java.io.*;
 import java.nio.file.Path;
 
 public class LocalFileStore implements FileStore {
-    private final String basePath = "/Users/dgyim/IdeaProjects/goodpass/src/test/resources";
+    private final String basePath = System.getProperty("user.dir");
 
     @Override
     public void upload(String bucketName, String directoryPath, String fileName, InputStream inputStream) {

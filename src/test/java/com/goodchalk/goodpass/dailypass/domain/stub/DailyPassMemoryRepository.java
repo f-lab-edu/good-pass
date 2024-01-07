@@ -1,4 +1,4 @@
-package com.goodchalk.goodpass.domain.repository.stub;
+package com.goodchalk.goodpass.dailypass.domain.stub;
 
 import com.goodchalk.goodpass.dailypass.domain.DailyPass;
 import com.goodchalk.goodpass.dailypass.domain.DailyPassRepository;

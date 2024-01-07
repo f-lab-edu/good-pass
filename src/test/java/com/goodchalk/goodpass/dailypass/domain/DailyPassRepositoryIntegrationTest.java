@@ -1,4 +1,4 @@
-package com.goodchalk.goodpass.domain.repository;
+package com.goodchalk.goodpass.dailypass.domain;
 
 import com.goodchalk.goodpass.dailypass.domain.DailyPass;
 import com.goodchalk.goodpass.dailypass.domain.DailyPassRepository;

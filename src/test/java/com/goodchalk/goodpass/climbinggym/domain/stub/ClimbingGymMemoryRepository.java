@@ -1,4 +1,4 @@
-package com.goodchalk.goodpass.domain.repository.stub;
+package com.goodchalk.goodpass.climbinggym.domain.stub;
 
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGym;
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGymRepository;
