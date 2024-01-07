@@ -1,4 +1,4 @@
-package com.goodchalk.goodpass.infra;
+package com.goodchalk.goodpass.infra.filestore;
 
 import com.goodchalk.goodpass.infra.filestore.FileStore;
 

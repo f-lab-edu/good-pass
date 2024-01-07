@@ -1,6 +1,6 @@
 package com.goodchalk.goodpass.dailypass.domain;
 
-import com.goodchalk.goodpass.infra.LocalFileStore;
+import com.goodchalk.goodpass.infra.filestore.LocalFileStore;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
