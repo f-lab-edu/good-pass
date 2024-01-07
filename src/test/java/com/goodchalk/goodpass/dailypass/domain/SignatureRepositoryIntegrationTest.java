@@ -16,7 +16,7 @@ class SignatureRepositoryIntegrationTest {
     private final SignatureFileNameConverter signatureFileNameConverter = new SignatureFileNameConverter(15);
 
     @Test
-    public void uploadTest() {
+    void uploadTest() {
         byte[] bytes = new byte[100];
         InputStream inputStream = new ByteArrayInputStream(bytes);
         String signatureFileName = signatureFileNameConverter.convert(new Signature(123L, inputStream));
