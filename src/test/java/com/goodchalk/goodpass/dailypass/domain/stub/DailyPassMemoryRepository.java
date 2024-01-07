@@ -1,7 +1,9 @@
-package com.goodchalk.goodpass.domain.repository.stub;
+package com.goodchalk.goodpass.dailypass.domain.stub;
 
 import com.goodchalk.goodpass.dailypass.domain.DailyPass;
 import com.goodchalk.goodpass.dailypass.domain.DailyPassRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.HashMap;
 import java.util.List;
@@ -57,5 +59,15 @@ public class DailyPassMemoryRepository implements DailyPassRepository {
         dailyPassMap.put(id, targetDailyPass);
 
         return targetDailyPass;
+    }
+
+    @Override
+    public Page<DailyPass> findByClimbingGymId(Long climbingGymId, Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public Page<DailyPass> findAll(Pageable pageable) {
+        return null;
     }
 }

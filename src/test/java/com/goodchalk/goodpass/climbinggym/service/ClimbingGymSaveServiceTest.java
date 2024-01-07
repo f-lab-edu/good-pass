@@ -3,7 +3,7 @@ package com.goodchalk.goodpass.climbinggym.service;
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGym;
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGymRepository;
 import com.goodchalk.goodpass.climbinggym.service.dto.ClimbingGymCreator;
-import com.goodchalk.goodpass.domain.repository.stub.ClimbingGymMemoryRepository;
+import com.goodchalk.goodpass.climbinggym.domain.stub.ClimbingGymMemoryRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

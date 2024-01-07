@@ -1,8 +1,8 @@
-package com.goodchalk.goodpass.domain.repository;
+package com.goodchalk.goodpass.climbinggym.domain;
 
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGym;
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGymRepository;
-import com.goodchalk.goodpass.domain.repository.stub.ClimbingGymMemoryRepository;
+import com.goodchalk.goodpass.climbinggym.domain.stub.ClimbingGymMemoryRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

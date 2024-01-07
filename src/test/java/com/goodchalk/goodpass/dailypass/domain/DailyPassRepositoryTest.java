@@ -1,9 +1,9 @@
-package com.goodchalk.goodpass.domain.repository;
+package com.goodchalk.goodpass.dailypass.domain;
 
 import com.goodchalk.goodpass.dailypass.domain.DailyPass;
 import com.goodchalk.goodpass.dailypass.domain.DailyPassRepository;
 import com.goodchalk.goodpass.dailypass.domain.SignatureStatus;
-import com.goodchalk.goodpass.domain.repository.stub.DailyPassMemoryRepository;
+import com.goodchalk.goodpass.dailypass.domain.stub.DailyPassMemoryRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

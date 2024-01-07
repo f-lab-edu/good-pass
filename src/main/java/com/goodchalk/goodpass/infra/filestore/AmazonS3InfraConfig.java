@@ -1,4 +1,4 @@
-package com.goodchalk.goodpass.dailypass.infra;
+package com.goodchalk.goodpass.infra.filestore;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
@@ -10,7 +10,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-//위치가 애매한데, 일단 여기다 두고 윤곽이 보일 시 변경 예정
 @Configuration
 @ConfigurationProperties(prefix = "amazons3")
 @Setter
