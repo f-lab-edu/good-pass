@@ -8,6 +8,7 @@ import com.goodchalk.goodpass.climbinggym.controller.dto.response.ClimbingGymCon
 import com.goodchalk.goodpass.dailypass.controller.dto.response.DailyPassSignatureDto;
 import com.goodchalk.goodpass.dailypass.domain.DailyPass;
 import com.goodchalk.goodpass.dailypass.service.DailyPassSearchService;
+import com.goodchalk.goodpass.dailypass.service.DailyPassStatusUpdateService;
 import com.goodchalk.goodpass.dailypass.service.SignatureSaveService;
 import com.goodchalk.goodpass.dailypass.service.dto.SignatureDto;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ public class DailyPassSignatureSaveController {
     private final ClimbingGymContentPosterSearchService climbingGymContentPosterSearchService;
     private final SignatureSaveService signatureSaveService;
     private final DailyPassSearchService dailyPassSearchService;
+    private final DailyPassStatusUpdateService dailyPassStatusUpdateService;
     @GetMapping
     public ClimbingGymContentResponseDto showSaveComplete(@PathVariable("dailyPassId") Long dailyPassId) {
         DailyPass dailyPass = dailyPassSearchService.findDailyPass(dailyPassId);
@@ -39,6 +41,7 @@ public class DailyPassSignatureSaveController {
         SignatureDto signatureDto = new SignatureDto(dailyPassId, signatureFile);
         signatureSaveService.save(signatureDto);
 
+        dailyPassStatusUpdateService.update(dailyPassId);
         DailyPass dailyPass = dailyPassSearchService.findDailyPass(dailyPassId);
 
         return DailyPassSignatureDto.from(dailyPass);
