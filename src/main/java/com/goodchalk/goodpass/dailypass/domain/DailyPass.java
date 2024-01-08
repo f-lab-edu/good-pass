@@ -19,10 +19,11 @@ public class DailyPass {
     private String contact;
     private Contract dailyUseContract;
     private Contract privacyContract;
-    private LocalDateTime submitTime;
+    private LocalDateTime submitDateTime;
+    private LocalDateTime requestDateTime;
 
     @Builder
-    public DailyPass(Long id, Long climbingGymId, SignatureStatus signatureStatus, String userName, String contact, Contract dailyUseContract, Contract privacyContract, LocalDateTime submitTime) {
+    public DailyPass(Long id, Long climbingGymId, SignatureStatus signatureStatus, String userName, String contact, Contract dailyUseContract, Contract privacyContract, LocalDateTime submitDateTime, LocalDateTime requestDateTime) {
         this.id = id;
         this.climbingGymId = climbingGymId;
         this.signatureStatus = signatureStatus;
@@ -30,7 +31,8 @@ public class DailyPass {
         this.contact = contact;
         this.dailyUseContract = dailyUseContract;
         this.privacyContract = privacyContract;
-        this.submitTime = submitTime;
+        this.submitDateTime = submitDateTime;
+        this.requestDateTime = requestDateTime;
     }
 
     public void updateSignatureSubmitted() {

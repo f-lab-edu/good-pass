@@ -25,7 +25,8 @@ create table `DAILY_PASS`
     `daily_use_contract`           varchar(13),
     `privacy_contract`             varchar(30),
     `signature_id` varchar(20),
-    `submit_time` datetime,
+    `submit_datetime` datetime,
+    `request_datetime` datetime,
     CONSTRAINT `DAILY_PASS_PK` PRIMARY KEY (`id`)
 );
 
