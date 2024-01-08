@@ -19,8 +19,9 @@ public class ClimbingGymPosterUploadService {
     public void save(ClimbingGymPoster climbingGymPoster) {
         Long climbingGymId = climbingGymPoster.getClimbingGymId();
         Optional<ClimbingGym> climbingGym = climbingGymRepository.findById(climbingGymId);
-        climbingGym.orElseThrow(()
-                -> new GoodPassBusinessException("존재하지 않는 climbingGymId 입니다. climbingGymId = " + climbingGymId));
+        if (climbingGym.isEmpty()) {
+            throw new GoodPassBusinessException("존재하지 않는 climbingGymId 입니다. climbingGymId = " + climbingGymId);
+        }
 
         climbingGymPosterRepository.upload(climbingGymPoster);
     }

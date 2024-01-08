@@ -1,6 +1,5 @@
 package com.goodchalk.goodpass.climbinggym.service;
 
-import com.amazonaws.services.s3.AmazonS3;
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGym;
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGymPosterRepository;
 import com.goodchalk.goodpass.climbinggym.domain.ClimbingGymRepository;
