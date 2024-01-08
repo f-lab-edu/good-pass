@@ -16,11 +16,11 @@ public class DailyPassStatusUpdateService {
     private final DailyPassRepository dailyPassRepository;
 
     public void update(Long dailyPassId) {
-        Optional<DailyPass> dailyPassOptional = dailyPassRepository.findById(dailyPassId);
-        DailyPass dailyPass = dailyPassOptional.orElseThrow(() ->
+        DailyPass dailyPass = dailyPassRepository.findById(dailyPassId).orElseThrow(() ->
                 new GoodPassBusinessException("작성된 일일이용서가 없습니다. dailyPassId = " + dailyPassId));
-        DailyPass submittedSignatureDailyPass = dailyPass.submittedSignature();
 
-        dailyPassRepository.save(submittedSignatureDailyPass);
+        dailyPass.updateSignatureSubmitted();
+
+        dailyPassRepository.save(dailyPass);
     }
 }

@@ -17,20 +17,20 @@ public class ClimbingGym {
     private String owner;
     private String contact;
     private String email;
-    private String message;
+    private String posterLink;
 
     @Builder
-    public ClimbingGym(Long id, String climbingGymName, String address, String owner, String contact, String email, String message) {
+    public ClimbingGym(Long id, String climbingGymName, String address, String owner, String contact, String email, String posterLink) {
         this.id = id;
         this.climbingGymName = climbingGymName;
         this.address = address;
         this.owner = owner;
         this.contact = contact;
         this.email = email;
-        this.message = message;
+        this.posterLink = posterLink;
     }
 
-    public ClimbingGymContentMessage toContentMessage() {
-        return new ClimbingGymContentMessage(climbingGymName, message);
+    public void updatePosterLink(String posterLink) {
+        this.posterLink = posterLink;
     }
 }

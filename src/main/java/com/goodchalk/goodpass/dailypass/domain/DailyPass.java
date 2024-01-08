@@ -19,10 +19,11 @@ public class DailyPass {
     private String contact;
     private Contract dailyUseContract;
     private Contract privacyContract;
-    private LocalDateTime submitTime;
+    private LocalDateTime submitDateTime;
+    private LocalDateTime requestDateTime;
 
     @Builder
-    public DailyPass(Long id, Long climbingGymId, SignatureStatus signatureStatus, String userName, String contact, Contract dailyUseContract, Contract privacyContract, LocalDateTime submitTime) {
+    public DailyPass(Long id, Long climbingGymId, SignatureStatus signatureStatus, String userName, String contact, Contract dailyUseContract, Contract privacyContract, LocalDateTime submitDateTime, LocalDateTime requestDateTime) {
         this.id = id;
         this.climbingGymId = climbingGymId;
         this.signatureStatus = signatureStatus;
@@ -30,22 +31,14 @@ public class DailyPass {
         this.contact = contact;
         this.dailyUseContract = dailyUseContract;
         this.privacyContract = privacyContract;
-        this.submitTime = submitTime;
+        this.submitDateTime = submitDateTime;
+        this.requestDateTime = requestDateTime;
     }
 
-    public DailyPass submittedSignature() {
+    public void updateSignatureSubmitted() {
         if (signatureStatus == SignatureStatus.SUBMIT) {
             throw new GoodPassBusinessException("이미 서명이 제출된 일일이용동의서입니다.");
         }
-        return DailyPass.builder()
-                .id(id)
-                .climbingGymId(climbingGymId)
-                .signatureStatus(SignatureStatus.SUBMIT)
-                .userName(userName)
-                .contact(contact)
-                .dailyUseContract(dailyUseContract)
-                .privacyContract(privacyContract)
-                .submitTime(LocalDateTime.now())
-                .build();
+        this.signatureStatus = SignatureStatus.SUBMIT;
     }
 }

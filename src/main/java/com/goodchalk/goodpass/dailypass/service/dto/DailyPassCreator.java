@@ -29,7 +29,8 @@ public class DailyPassCreator {
                 .contact(contact)
                 .dailyUseContract(dailyUseGymContract)
                 .privacyContract(privacyContract)
-                .submitTime(submitTime)
+                .submitDateTime(submitTime)
+                .requestDateTime(LocalDateTime.now())
                 .build();
     }
 }
