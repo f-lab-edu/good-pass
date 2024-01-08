@@ -33,19 +33,10 @@ public class DailyPass {
         this.submitTime = submitTime;
     }
 
-    public DailyPass submittedSignature() {
+    public void updateSignatureSubmitted() {
         if (signatureStatus == SignatureStatus.SUBMIT) {
             throw new GoodPassBusinessException("이미 서명이 제출된 일일이용동의서입니다.");
         }
-        return DailyPass.builder()
-                .id(id)
-                .climbingGymId(climbingGymId)
-                .signatureStatus(SignatureStatus.SUBMIT)
-                .userName(userName)
-                .contact(contact)
-                .dailyUseContract(dailyUseContract)
-                .privacyContract(privacyContract)
-                .submitTime(LocalDateTime.now())
-                .build();
+        this.signatureStatus = SignatureStatus.SUBMIT;
     }
 }
