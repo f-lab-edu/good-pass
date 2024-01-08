@@ -28,6 +28,11 @@ public class LocalFileStore implements FileStore {
     }
 
     @Override
+    public void upload(GoodPassFilePath goodPassFilePath, InputStream inputStream) {
+
+    }
+
+    @Override
     public String getUrl(String bucketName, String directoryPath, String fileName) {
         return null;
     }

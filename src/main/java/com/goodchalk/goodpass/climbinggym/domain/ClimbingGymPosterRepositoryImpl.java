@@ -1,8 +1,11 @@
 package com.goodchalk.goodpass.climbinggym.domain;
 
 import com.goodchalk.goodpass.infra.filestore.FileStore;
+import com.goodchalk.goodpass.infra.filestore.GoodPassFilePath;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+
+import java.nio.file.Path;
 
 @Repository
 @RequiredArgsConstructor
@@ -11,12 +14,10 @@ public class ClimbingGymPosterRepositoryImpl implements ClimbingGymPosterReposit
 
     @Override
     public void upload(ClimbingGymPoster climbingGymPoster) {
-        Long climbingGymId = climbingGymPoster.getClimbingGymId();
-        String posterFileName = toFileName(climbingGymId);
-        fileStore.upload("good-pass",
-                "climbing-gym-poster",
-                posterFileName,
-                climbingGymPoster.getPosterInputStream());
+        String posterFileName = toFileName(climbingGymPoster.getClimbingGymId());
+        Path targetFilePath = Path.of("climbing-gym-poster", posterFileName);
+        GoodPassFilePath goodPassFilePath = GoodPassFilePath.from(targetFilePath);
+        fileStore.upload(goodPassFilePath, climbingGymPoster.getPosterInputStream());
     }
 
     @Override

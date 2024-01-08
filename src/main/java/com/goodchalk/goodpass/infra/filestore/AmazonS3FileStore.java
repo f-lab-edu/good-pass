@@ -27,6 +27,11 @@ public class AmazonS3FileStore implements FileStore{
     }
 
     @Override
+    public void upload(GoodPassFilePath goodPassFilePath, InputStream inputStream) {
+        upload(GoodPassFilePath.BUCKET_NAME, goodPassFilePath.getDirectoryPath(), goodPassFilePath.getFileName(), inputStream);
+    }
+
+    @Override
     public String getUrl(String bucketName, String directoryPath, String fileName) {
         String targetFilePath = Path.of(directoryPath, fileName).toString();
         URL url = amazonS3Source.getUrl(bucketName, targetFilePath);

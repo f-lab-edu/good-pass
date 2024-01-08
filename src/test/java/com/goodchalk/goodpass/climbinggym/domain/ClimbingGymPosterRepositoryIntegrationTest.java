@@ -20,5 +20,4 @@ class ClimbingGymPosterRepositoryIntegrationTest {
         URL url = amazonS3.getUrl("good-pass", "daily-pass/000000000000123");
         System.out.println(url.toString());
     }
-
 }

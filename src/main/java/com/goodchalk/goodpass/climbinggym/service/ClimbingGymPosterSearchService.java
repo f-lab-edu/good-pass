@@ -14,15 +14,9 @@ public class ClimbingGymPosterSearchService {
     private final ClimbingGymRepository climbingGymRepository;
 
     public String searchPosterLink(Long climbingGymId) {
-        Optional<ClimbingGym> climbingGymOptional = climbingGymRepository.findById(climbingGymId);
-        ClimbingGym climbingGym = climbingGymOptional.orElseThrow(()
+        ClimbingGym climbingGym  = climbingGymRepository.findById(climbingGymId).orElseThrow(()
                 -> new GoodPassBusinessException("등록되지 않은 climbingGymId 입니다. climbingGymId = " + climbingGymId));
 
-        String posterLink = climbingGym.getPosterLink();
-        if (posterLink == null || posterLink.isEmpty()) {
-            return "";
-        }
-
-        return posterLink;
+        return climbingGym.getPosterLink();
     }
 }
