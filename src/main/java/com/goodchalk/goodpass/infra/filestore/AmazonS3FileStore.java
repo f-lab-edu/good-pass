@@ -5,13 +5,11 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.goodchalk.goodpass.exception.GoodPassSystemException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Path;
 
-@Component
 @RequiredArgsConstructor
 public class AmazonS3FileStore implements FileStore{
     private final String bucketName;
