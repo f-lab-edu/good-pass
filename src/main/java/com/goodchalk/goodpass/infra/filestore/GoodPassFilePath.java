@@ -8,8 +8,6 @@ import java.nio.file.Path;
 @RequiredArgsConstructor
 @Getter
 public class GoodPassFilePath {
-    public static final String BUCKET_NAME = "good-pass";
-
     private final String fileName;
     private final String directoryPath;
 

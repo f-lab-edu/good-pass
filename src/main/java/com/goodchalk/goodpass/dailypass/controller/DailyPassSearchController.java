@@ -17,12 +17,6 @@ import java.util.List;
 @RequestMapping
 public class DailyPassSearchController {
     private final DailyPassesSearchService dailyPassesSearchService;
-//    @GetMapping
-//    public DailyPassesDto searchClimbingGymDailyPasses(@RequestParam("climbingGymId") Long climbingGymId) {
-//        List<DailyPass> dailyPasses = dailyPassesSearchService.searchByClimbingGymId(climbingGymId);
-//
-//        return new DailyPassesDto(dailyPasses);
-//    }
 
     @GetMapping("/daily-passes")
     public DailyPassesResponseDto searchClimbingGymDailyPassesWithPage(@RequestParam("climbingGymId") Long climbingGymId,
