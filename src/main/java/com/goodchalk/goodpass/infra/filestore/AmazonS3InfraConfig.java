@@ -18,6 +18,7 @@ public class AmazonS3InfraConfig {
     private String regionName;
     private String accessKey;
     private String secretKey;
+    private String bucketName;
 
     @Bean
     public AmazonS3 amazonS3Source() {
@@ -25,6 +26,11 @@ public class AmazonS3InfraConfig {
                 .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(endPoint, regionName))
                 .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(accessKey, secretKey)))
                 .build();
+    }
+
+    @Bean
+    public FileStore amazonS3FileStore() {
+        return new AmazonS3FileStore(bucketName, amazonS3Source());
     }
 }
 
