@@ -48,7 +48,7 @@ public class DailyPassMemoryRepository implements DailyPassRepository {
                 .contact(dailyPass.getContact())
                 .dailyUseContract(dailyPass.getDailyUseContract())
                 .privacyContract(dailyPass.getPrivacyContract())
-                .submitTime(dailyPass.getSubmitDateTime())
+                .submitDateTime(dailyPass.getSubmitDateTime())
                 .build();
 
         Long id = targetDailyPass.getId();

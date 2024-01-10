@@ -1,10 +1,9 @@
 package com.goodchalk.goodpass.dailypass.controller;
 
-import com.goodchalk.goodpass.dailypass.controller.dto.response.DailyPassSignatureDto;
+import com.goodchalk.goodpass.dailypass.controller.dto.response.DailyPassSaveResponseDto;
+import com.goodchalk.goodpass.dailypass.controller.dto.response.DailyPassSignatureSaveResponseDto;
 import com.goodchalk.goodpass.dailypass.domain.DailyPass;
-import com.goodchalk.goodpass.dailypass.service.DailyPassSearchService;
-import com.goodchalk.goodpass.dailypass.service.DailyPassStatusUpdateService;
-import com.goodchalk.goodpass.dailypass.service.SignatureSaveService;
+import com.goodchalk.goodpass.dailypass.service.*;
 import com.goodchalk.goodpass.dailypass.service.dto.SignatureDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -18,19 +17,16 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 @RequestMapping("daily-pass/signature/{dailyPassId}")
 public class DailyPassSignatureSaveController {
-    private final SignatureSaveService signatureSaveService;
     private final DailyPassSearchService dailyPassSearchService;
-    private final DailyPassStatusUpdateService dailyPassStatusUpdateService;
+    private final SignatureSaveService signatureSaveService;
 
     @PostMapping
-    public DailyPassSignatureDto saveSignature(@PathVariable("dailyPassId") Long dailyPassId,
-                                               @RequestParam MultipartFile signatureFile) {
+    public DailyPassSignatureSaveResponseDto saveSignature(@PathVariable("dailyPassId") Long dailyPassId,
+                                                  @RequestParam MultipartFile signatureFile) {
         SignatureDto signatureDto = new SignatureDto(dailyPassId, signatureFile);
         signatureSaveService.save(signatureDto);
-
-        dailyPassStatusUpdateService.update(dailyPassId);
         DailyPass dailyPass = dailyPassSearchService.findDailyPass(dailyPassId);
 
-        return DailyPassSignatureDto.from(dailyPass);
+        return DailyPassSignatureSaveResponseDto.from(dailyPass);
     }
 }
