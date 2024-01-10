@@ -14,7 +14,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/daily-passes")
+@RequestMapping
 public class DailyPassSearchController {
     private final DailyPassesSearchService dailyPassesSearchService;
 //    @GetMapping
@@ -24,7 +24,7 @@ public class DailyPassSearchController {
 //        return new DailyPassesDto(dailyPasses);
 //    }
 
-    @GetMapping
+    @GetMapping("/daily-passes")
     public DailyPassesResponseDto searchClimbingGymDailyPassesWithPage(@RequestParam("climbingGymId") Long climbingGymId,
                                                                        @RequestParam("page") int page,
                                                                        @RequestParam("size") int size) {

@@ -12,12 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/daily-pass")
 @RequiredArgsConstructor
 public class DailyPassSaveController {
     private final DailyPassSaveService dailyPassSaveService;
 
-    @PostMapping
+    @PostMapping("/daily-pass")
     public DailyPassSaveResponseDto save(@RequestBody DailyPassSaveRequestDto dailyPassSaveRequestDto) {
         DailyPassCreator dailyPassCreator = dailyPassSaveRequestDto.toCreator();
         DailyPass dailyPass = dailyPassSaveService.save(dailyPassCreator);

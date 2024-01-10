@@ -15,12 +15,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("daily-pass/signature/{dailyPassId}")
 public class DailyPassSignatureSaveController {
     private final DailyPassSearchService dailyPassSearchService;
     private final SignatureSaveService signatureSaveService;
 
-    @PostMapping
+    @PostMapping("daily-pass/signature/{dailyPassId}")
     public DailyPassSignatureSaveResponseDto saveSignature(@PathVariable("dailyPassId") Long dailyPassId,
                                                   @RequestParam MultipartFile signatureFile) {
         SignatureDto signatureDto = new SignatureDto(dailyPassId, signatureFile);
