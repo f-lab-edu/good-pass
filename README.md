@@ -13,7 +13,7 @@
 # 프로젝트 주요 관심사
 ## git branch 전략
 - master branch: 현재 운영 중인 브랜치
-- release branch: 현재 출시된 버전을 추가 수정하는 브랜치
+- release branch: 출시될 버전을 QA 단계에서 수정하는 브랜치
 - hot-fix branch: 현재 출시된 버전에 대한 수정 사항을 관리하는 브랜치
 - develop branch: 다음 출시 버전을 준비 중인 브랜치
 - feature branch: 다음 출시 버전의 기능 추가를 위한 브랜치
