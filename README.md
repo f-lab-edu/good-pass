@@ -33,12 +33,12 @@
 
 ## package 전략
 - domain 중심의 hexagonal 아키텍쳐
-  - climbinggym: 클라이밍장 관련 패키지
-  - dailypass: 일일이용동의서 관련 패키지
-  - exception: GoodPassBusinessException, GoodPassSystemException 두 가지로 분리.
-    - GoodPass 프로젝트에서 발생된 예외는 모두 해당 exception으로 감싸서 던지기
-  - infra: 인프라 특성이 강한 외부 저장소 및 api 연동 관련 패키지.
-    - 결국 domain에 활용되지만 interface를 통하여 해당 패키지에서 외부와 분리하는 작업 수행
+   - climbinggym: 클라이밍장 관련 패키지
+   - dailypass: 일일이용동의서 관련 패키지
+   - exception: GoodPassBusinessException, GoodPassSystemException 두 가지로 분리.
+      - GoodPass 프로젝트에서 발생된 예외는 모두 해당 exception으로 감싸서 던지기
+   - infra: 인프라 특성이 강한 외부 저장소 및 api 연동 관련 패키지.
+      - 결국 domain에 활용되지만 interface를 통하여 해당 패키지에서 외부와 분리하는 작업 수행
 - 각 패키지 내에서는 domain, service, controller로 나뉘어 layer 구성. 
 
 ## 비지니스 로직 POJO 분리
@@ -73,12 +73,12 @@
 ## 네트워크 구성
 Virtual Private Cloud (VPC) 를 구성하여 독립적인 네트워크를 구축
 - public subnet: nginx, jenkins, bastion 서버
-  - nginx는 서비스 web server이기 때문에 모든 ip를 open
-  - jenkins, bastion 서버는 개발자 ip/port만 open하여 제한적인 사용을 제공
+   - nginx는 서비스 web server이기 때문에 모든 ip를 open
+   - jenkins, bastion 서버는 개발자 ip/port만 open하여 제한적인 사용을 제공
 - private subnet: goodpass app과 MySQL server
-  - goodpass app과 MySQL server subnet을 분리를 통해 MySQL subnet을 완전히 격리
-  - goodpass app subnet은 web server와 연결
-  - private server는 오로지 bastion 서버로만 ssh 접근 가능 (bastion 서버와 router table로 연결)
+   - goodpass app과 MySQL server subnet을 분리를 통해 MySQL subnet을 완전히 격리
+   - goodpass app subnet은 web server와 연결
+   - private server는 오로지 bastion 서버로만 ssh 접근 가능 (bastion 서버와 router table로 연결)
 
 ## 서버 구성
 - web server (nginx): 초기에는 단순한 web server의 역할. 리버스 프록시를 구성해 app server와 통신. 이후에는 load balancer로 확장 가능
