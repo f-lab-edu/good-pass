@@ -29,7 +29,7 @@
 ### 버전 출시 이후 hot-fix
 1. master 브랜치 대해서 hot-fix 브랜치 생성
 2. 기능 수정 후 master 브랜치로 pull request 생성
-3. merge 후에 배포
+3. master와 develop에 merge 후에 배포
 
 브랜치 전략 참고자료: https://techblog.woowahan.com/2553/
 
