@@ -90,9 +90,9 @@ Virtual Private Cloud (VPC) 를 구성하여 독립적인 네트워크를 구축
 ![Continuous Integration](https://github.com/f-lab-edu/good-pass/assets/75526682/bc38f921-4f25-4c8d-bbfd-b357a9abb0d6)
 
 - web hook 트리거 포인트
-  - push
-  - create pull request
-  - merge pull request
+   - push
+   - create pull request
+   - merge pull request
   
 # Continuous Deployment (CD)
 [branch 내용 입력하는 jenkins 스샷 필요]
