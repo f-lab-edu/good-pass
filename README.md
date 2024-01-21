@@ -31,6 +31,8 @@
 2. 기능 수정 후 master 브랜치로 pull request 생성
 3. merge 후에 배포
 
+브랜치 전략 참고자료: https://techblog.woowahan.com/2553/
+
 ## package 전략
 - domain 중심의 hexagonal 아키텍쳐
    - climbinggym: 클라이밍장 관련 패키지
