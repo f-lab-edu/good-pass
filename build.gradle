@@ -30,6 +30,8 @@ dependencies {
     implementation platform('com.amazonaws:aws-java-sdk-bom:1.12.529')
     implementation 'com.amazonaws:aws-java-sdk-s3'
 
+    runtimeOnly 'com.h2database:h2'
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testCompileOnly 'org.projectlombok:lombok'
