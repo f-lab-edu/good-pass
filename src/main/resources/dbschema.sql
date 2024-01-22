@@ -1,16 +1,14 @@
-use GOOD_PASS;
-
 drop table CLIMBING_GYM;
 
 create table `CLIMBING_GYM`(
-                               `id` int(10) NOT NULL AUTO_INCREMENT,
-                               `climbing_gym_name` varchar(30),
-                               `address` varchar(50),
-                               `owner` varchar(10),
-                               `contact` varchar(13),
-                               `email` varchar(30),
-                               `poster_link` varchar(100),
-                               CONSTRAINT `CLIMBING_GYM_PK` PRIMARY KEY(`id`)
+   `id` int(10) NOT NULL AUTO_INCREMENT,
+   `climbing_gym_name` varchar(30),
+   `address` varchar(50),
+   `owner` varchar(10),
+   `contact` varchar(13),
+   `email` varchar(30),
+   `poster_link` varchar(100),
+   CONSTRAINT `CLIMBING_GYM_PK` PRIMARY KEY(`id`)
 );
 
 drop table DAILY_PASS;
@@ -29,8 +27,3 @@ create table `DAILY_PASS`
     `request_datetime` datetime,
     CONSTRAINT `DAILY_PASS_PK` PRIMARY KEY (`id`)
 );
-
-
-select * from CLIMBING_GYM;
-
-select * from DAILY_PASS;
