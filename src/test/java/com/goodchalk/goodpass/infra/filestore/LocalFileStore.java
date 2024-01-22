@@ -9,9 +9,8 @@ public class LocalFileStore implements FileStore {
     private final String basePath = System.getProperty("user.dir");
 
     @Override
-    public void upload(String bucketName, String directoryPath, String fileName, InputStream inputStream) {
-        File targetFilePath = Path.of(basePath, bucketName, directoryPath, fileName).toFile();
-
+    public void upload(GoodPassFilePath goodPassFilePath, InputStream inputStream) {
+        File targetFilePath = Path.of(basePath, goodPassFilePath.getDirectoryPath(), goodPassFilePath.getFileName()).toFile();
         try (OutputStream targetOutputStream = toBufferedOutputStream(targetFilePath)) {
             byte[] buffer = new byte[8192];
             while (true) {
@@ -25,11 +24,6 @@ public class LocalFileStore implements FileStore {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    @Override
-    public void upload(GoodPassFilePath goodPassFilePath, InputStream inputStream) {
-
     }
 
     @Override

@@ -1,0 +1,55 @@
+spring:
+  profiles:
+    group:
+      "prod": "prod, common"
+      "dev": "dev, common"
+      "local": "local"
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mysql://101.101.209.147:3306/GOOD_PASS?allowPublicKeyRetrieval=true&useSSL=false
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
+server:
+  port: 8080
+amazons3:
+  endPoint: https://kr.object.ncloudstorage.com
+  regionName: kr-standard
+  accessKey: ${S3_ACCESSKEY}
+  secretKey: ${S3_SECRETKEY}
+  bucketName: ${S3_BUCKETNAME}
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:mysql://101.101.209.147:3306/GOOD_PASS?allowPublicKeyRetrieval=true&useSSL=false
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
+server:
+  port: 8080
+---
+
+spring:
+  config:
+    activate:
+      on-profile: local
+server:
+  port: 8080
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "common"
+  sql:
+    init:
+      mode: always
