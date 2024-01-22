@@ -9,7 +9,6 @@ import org.springframework.hateoas.Link;
 
 import java.time.LocalDateTime;
 
-@RequiredArgsConstructor
 @Builder
 public class DailyPassSaveResponseDto {
     private Long id;
@@ -23,6 +22,7 @@ public class DailyPassSaveResponseDto {
     public static DailyPassSaveResponseDto from(DailyPass dailyPass) {
         return DailyPassSaveResponseDto.builder()
                 .id(dailyPass.getId())
+                .userName(dailyPass.getUserName())
                 .climbingGymId(dailyPass.getClimbingGymId())
                 .contact(dailyPass.getContact())
                 .signatureStatus(dailyPass.getSignatureStatus())
