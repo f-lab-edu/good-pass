@@ -6,7 +6,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
 
-@Table("climbing_gym")
+@Table("CLIMBING_GYM")
 @Getter
 @NoArgsConstructor
 public class ClimbingGym {

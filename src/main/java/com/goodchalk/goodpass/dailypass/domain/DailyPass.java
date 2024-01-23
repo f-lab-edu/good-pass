@@ -7,7 +7,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
 
-@Table("daily_pass")
+@Table("DAILY_PASS")
 @Getter
 @NoArgsConstructor
 public class DailyPass {
