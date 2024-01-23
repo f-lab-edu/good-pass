@@ -9,8 +9,10 @@ import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 @Configuration
+@Profile("prod")
 @ConfigurationProperties(prefix = "amazons3")
 @Setter
 public class AmazonS3InfraConfig {
