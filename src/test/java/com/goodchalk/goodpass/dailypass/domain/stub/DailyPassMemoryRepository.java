@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class DailyPassMemoryRepository implements DailyPassRepository {
     private final Map<Long, DailyPass> dailyPassMap = new HashMap<>();
@@ -24,8 +25,7 @@ public class DailyPassMemoryRepository implements DailyPassRepository {
     @Override
     public List<DailyPass> findByClimbingGymId(Long climbingGymId) {
         return dailyPassMap.values().stream()
-                .filter(dailyPass -> dailyPass.getClimbingGymId().equals(climbingGymId))
-                .toList();
+                .filter(dailyPass -> dailyPass.getClimbingGymId().equals(climbingGymId)).collect(Collectors.toList());
     }
 
     @Override
