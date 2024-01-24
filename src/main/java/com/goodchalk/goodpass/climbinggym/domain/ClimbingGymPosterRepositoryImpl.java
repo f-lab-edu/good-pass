@@ -13,16 +13,12 @@ public class ClimbingGymPosterRepositoryImpl implements ClimbingGymPosterReposit
     private final FileStore fileStore;
 
     @Override
-    public void upload(ClimbingGymPoster climbingGymPoster) {
+    public String upload(ClimbingGymPoster climbingGymPoster) {
         String posterFileName = toFileName(climbingGymPoster.getClimbingGymId());
         Path targetFilePath = Path.of("climbing-gym-poster", posterFileName);
         GoodPassFilePath goodPassFilePath = GoodPassFilePath.from(targetFilePath);
-        fileStore.upload(goodPassFilePath, climbingGymPoster.getPosterInputStream());
-    }
 
-    @Override
-    public String findLink(Long climbingGymId) {
-        return fileStore.getUrl("good-pass", "climbing-gym-poster", toFileName(climbingGymId));
+        return fileStore.upload(goodPassFilePath, climbingGymPoster.getPosterInputStream());
     }
 
     private String toFileName(Long climbingGymId) {
