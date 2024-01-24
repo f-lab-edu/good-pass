@@ -1,15 +1,20 @@
 package com.goodchalk.goodpass.infra.filestore;
 
+import com.goodchalk.goodpass.exception.GoodPassSystemException;
 import com.goodchalk.goodpass.infra.filestore.FileStore;
+import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class LocalFileStore implements FileStore {
     private final String basePath = System.getProperty("user.dir");
 
     @Override
-    public void upload(GoodPassFilePath goodPassFilePath, InputStream inputStream) {
+    public String upload(GoodPassFilePath goodPassFilePath, InputStream inputStream) {
+        createDirectory(basePath, goodPassFilePath.getDirectoryPath());
+
         File targetFilePath = Path.of(basePath, goodPassFilePath.getDirectoryPath(), goodPassFilePath.getFileName()).toFile();
         try (OutputStream targetOutputStream = toBufferedOutputStream(targetFilePath)) {
             byte[] buffer = new byte[8192];
@@ -17,7 +22,7 @@ public class LocalFileStore implements FileStore {
                 int len = inputStream.read(buffer);
                 if (len == -1) {
                     targetOutputStream.flush();
-                    return;
+                    return targetFilePath.toString();
                 }
                 targetOutputStream.write(buffer);
             }
@@ -26,9 +31,17 @@ public class LocalFileStore implements FileStore {
         }
     }
 
-    @Override
-    public String getUrl(String bucketName, String directoryPath, String fileName) {
-        return null;
+    private void createDirectory(String basePath, String directoryPath) {
+        Path path = Path.of(basePath, directoryPath);
+        if (Files.exists(path)) {
+            return;
+        }
+
+        try {
+            Files.createDirectory(path);
+        } catch (IOException e) {
+            throw new GoodPassSystemException("테스트 폴더를 생성할 수 없습니다. path = " + path);
+        }
     }
 
     private OutputStream toBufferedOutputStream(File targetFilePath) {
