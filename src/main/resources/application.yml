@@ -21,7 +21,7 @@ spring:
     activate:
       on-profile: dev
   datasource:
-    url: jdbc:h2:mem:testDB
+    url: jdbc:h2:mem:testDB;DATABASE_TO_UPPER=FALSE
     driver-class-name: org.h2.Driver
     username: sa
     password:
