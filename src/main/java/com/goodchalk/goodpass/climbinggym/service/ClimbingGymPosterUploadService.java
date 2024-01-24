@@ -16,13 +16,13 @@ public class ClimbingGymPosterUploadService {
     private final ClimbingGymPosterRepository climbingGymPosterRepository;
     private final ClimbingGymRepository climbingGymRepository;
 
-    public void save(ClimbingGymPoster climbingGymPoster) {
+    public String save(ClimbingGymPoster climbingGymPoster) {
         Long climbingGymId = climbingGymPoster.getClimbingGymId();
         Optional<ClimbingGym> climbingGym = climbingGymRepository.findById(climbingGymId);
         if (climbingGym.isEmpty()) {
             throw new GoodPassBusinessException("존재하지 않는 climbingGymId 입니다. climbingGymId = " + climbingGymId);
         }
 
-        climbingGymPosterRepository.upload(climbingGymPoster);
+        return climbingGymPosterRepository.upload(climbingGymPoster);
     }
 }
