@@ -11,7 +11,7 @@ public class ClimbingGymPosterSaveService {
     private final ClimbingGymPosterLinkUpdateService climbingGymPosterLinkUpdateService;
 
     public void save(ClimbingGymPoster climbingGymPoster) {
-        climbingGymPosterUploadService.save(climbingGymPoster);
-        climbingGymPosterLinkUpdateService.update(climbingGymPoster.getClimbingGymId());
+        String posterLink = climbingGymPosterUploadService.save(climbingGymPoster);
+        climbingGymPosterLinkUpdateService.update(climbingGymPoster.getClimbingGymId(), posterLink);
     }
 }

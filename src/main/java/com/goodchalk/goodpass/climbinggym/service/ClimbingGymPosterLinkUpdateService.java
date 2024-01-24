@@ -17,8 +17,7 @@ public class ClimbingGymPosterLinkUpdateService {
     private final ClimbingGymRepository climbingGymRepository;
     private final ClimbingGymPosterRepository climbingGymPosterRepository;
 
-    public ClimbingGym update(Long climbingGymId) {
-        String posterLink = climbingGymPosterRepository.findLink(climbingGymId);
+    public ClimbingGym update(Long climbingGymId, String posterLink) {
         if (posterLink == null || posterLink.isEmpty()) {
             throw new GoodPassBusinessException("climbingGymId에 대한 poster 파일이 존재하지 않습니다. climbingGymId = " + climbingGymId);
         }
