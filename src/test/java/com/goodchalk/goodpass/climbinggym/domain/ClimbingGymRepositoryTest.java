@@ -45,7 +45,7 @@ class ClimbingGymRepositoryTest {
         Optional<ClimbingGym> climbingGymOptional = climbingGymRepository.findByClimbingGymName("픽클라이밍");
         ClimbingGym actualClimbingGym = climbingGymOptional.orElseThrow(RuntimeException::new);
 
-        Assertions.assertThat(actualClimbingGym.getClimbingGymName()).isEqualTo("픽클라이밍");
+        assertThat(actualClimbingGym.getClimbingGymName()).isEqualTo("픽클라이밍");
     }
 
     @Test
@@ -64,6 +64,6 @@ class ClimbingGymRepositoryTest {
         AtomicInteger count = new AtomicInteger();
         climbingGyms.forEach(climbingGym-> count.getAndIncrement());
 
-        Assertions.assertThat(count.get()).isEqualTo(2);
+        assertThat(count.get()).isEqualTo(2);
     }
 }
