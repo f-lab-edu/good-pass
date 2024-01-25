@@ -4,7 +4,7 @@ spring:
       on-profile: prod
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mysql:${MYSQL_URL}?allowPublicKeyRetrieval=true&useSSL=false
+    url: jdbc:mariadb:${MYSQL_URL}
     username: ${MYSQL_USERNAME}
     password: ${MYSQL_PASSWORD}
 
