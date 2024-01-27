@@ -1,8 +1,8 @@
 package com.goodchalk.goodpass.infra.filestore;
 
 import com.goodchalk.goodpass.exception.GoodPassSystemException;
-import com.goodchalk.goodpass.infra.filestore.FileStore;
-import org.junit.jupiter.api.Test;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.nio.file.Files;
