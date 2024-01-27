@@ -1,15 +1,15 @@
 package com.goodchalk.goodpass.climbinggym.controller;
 
 
-import com.goodchalk.goodpass.climbinggym.service.ClimbingGymInfoSearchService;
 import com.goodchalk.goodpass.climbinggym.controller.dto.response.ClimbingGymNameDto;
+import com.goodchalk.goodpass.climbinggym.service.ClimbingGymInfoSearchService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 public class ClimbingGymNameSearchController {
     private final ClimbingGymInfoSearchService climbingGymInfoSearchService;
